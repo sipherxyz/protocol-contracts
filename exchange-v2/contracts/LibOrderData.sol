@@ -5,14 +5,21 @@ pragma solidity 0.7.6;
 import "./LibOrder.sol";
 
 library LibOrderData {
-    function parse(LibOrder.Order memory order) pure internal returns (LibOrderDataV2.DataV2 memory dataOrder) {
+    function parse(LibOrder.Order memory order) pure internal returns (LibOrderDataV3.DataV3 memory dataOrder) {
         if (order.dataType == LibOrderDataV1.V1) {
             LibOrderDataV1.DataV1 memory dataV1 = LibOrderDataV1.decodeOrderDataV1(order.data);
             dataOrder.payouts = dataV1.payouts;
             dataOrder.originFees = dataV1.originFees;
             dataOrder.isMakeFill = false;
+            dataOrder.isOnChain = false;
         } else if (order.dataType == LibOrderDataV2.V2) {
-            dataOrder = LibOrderDataV2.decodeOrderDataV2(order.data);
+            LibOrderDataV2.DataV2 memory dataV2 = LibOrderDataV2.decodeOrderDataV2(order.data);
+            dataOrder.payouts = dataV2.payouts;
+            dataOrder.originFees = dataV2.originFees;
+            dataOrder.isMakeFill = dataV2.isMakeFill;
+            dataOrder.isOnChain = false;
+        }  else if (order.dataType == LibOrderDataV3.V3) {
+            dataOrder = LibOrderDataV3.decodeOrderDataV3(order.data);
         } else if (order.dataType == 0xffffffff) {
         } else {
             revert("Unknown Order data type");

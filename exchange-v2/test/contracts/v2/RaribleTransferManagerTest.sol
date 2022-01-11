@@ -18,6 +18,10 @@ contract RaribleTransferManagerTest is RaribleTransferManager, TransferExecutor,
         return abi.encode(data);
     }
 
+    function encodeV3(LibOrderDataV3.DataV3 memory data) pure external returns (bytes memory) {
+        return abi.encode(data);
+    }
+
     function checkDoTransfers(
         LibAsset.AssetType memory makeMatch,
         LibAsset.AssetType memory takeMatch,

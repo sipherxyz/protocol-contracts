@@ -71,8 +71,8 @@ abstract contract RaribleTransferManager is OwnableUpgradeable, ITransferManager
         LibFill.FillResult memory fill,
         LibOrder.Order memory leftOrder,
         LibOrder.Order memory rightOrder,
-        LibOrderDataV2.DataV2 memory leftOrderData,
-        LibOrderDataV2.DataV2 memory rightOrderData
+        LibOrderDataV3.DataV3 memory leftOrderData,
+        LibOrderDataV3.DataV3 memory rightOrderData
     ) override internal returns (uint totalMakeValue, uint totalTakeValue) {
         MatchFees memory matchFees = getMatchFees(leftOrder, rightOrder, matchedAssets.makeMatch, matchedAssets.takeMatch);
         
@@ -123,8 +123,8 @@ abstract contract RaribleTransferManager is OwnableUpgradeable, ITransferManager
         uint amount,
         address from,
         MatchFees memory matchProtocolFee,
-        LibOrderDataV2.DataV2 memory dataCalculate,
-        LibOrderDataV2.DataV2 memory dataNft,
+        LibOrderDataV3.DataV3 memory dataCalculate,
+        LibOrderDataV3.DataV3 memory dataNft,
         LibAsset.AssetType memory matchCalculate,
         LibAsset.AssetType memory matchNft,
         bytes4 transferDirection

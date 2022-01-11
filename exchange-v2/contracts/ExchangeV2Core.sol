@@ -37,12 +37,13 @@ abstract contract ExchangeV2Core is Initializable, OwnableUpgradeable, AssetMatc
     /// @dev Creates new or updates an on-chain order
     function upsertOrder(LibOrder.Order memory order) external payable {
         bytes32 orderKeyHash = LibOrder.hashKey(order);
-        LibOrderDataV2.DataV2 memory dataNewOrder = LibOrderData.parse(order);
+        LibOrderDataV3.DataV3 memory dataNewOrder = LibOrderData.parse(order);
 
         //checking if order is correct
         require(_msgSender() == order.maker, "order.maker must be msg.sender");
         require(orderNotFilled(order, orderKeyHash, dataNewOrder), "order already filled");
-        
+        require(dataNewOrder.isOnChain == true, "order isn`t onChain");
+
         uint newTotal = getTotalValue(order, orderKeyHash, dataNewOrder);
 
         //value of makeAsset that needs to be transfered with tx 
@@ -91,6 +92,7 @@ abstract contract ExchangeV2Core is Initializable, OwnableUpgradeable, AssetMatc
 
         //if it's an on-chain order
         if (checkOrderExistance(orderKeyHash)) {
+            require(isTheSameAsOnChain(order, orderKeyHash), "order not the same as onChain");
             LibOrder.Order memory temp = onChainOrders[orderKeyHash].order;
 
             //for now locking only ETH, so returning only locked ETH also
@@ -127,8 +129,8 @@ abstract contract ExchangeV2Core is Initializable, OwnableUpgradeable, AssetMatc
         bytes32 leftOrderKeyHash = LibOrder.hashKey(orderLeft);
         bytes32 rightOrderKeyHash = LibOrder.hashKey(orderRight);
 
-        LibOrderDataV2.DataV2 memory leftOrderData = LibOrderData.parse(orderLeft);
-        LibOrderDataV2.DataV2 memory rightOrderData = LibOrderData.parse(orderRight);
+        LibOrderDataV3.DataV3 memory leftOrderData = LibOrderData.parse(orderLeft);
+        LibOrderDataV3.DataV3 memory rightOrderData = LibOrderData.parse(orderRight);
 
         LibFill.FillResult memory newFill = getFillSetNew(orderLeft, orderRight, leftOrderKeyHash, rightOrderKeyHash, leftOrderData, rightOrderData);
         
@@ -147,8 +149,8 @@ abstract contract ExchangeV2Core is Initializable, OwnableUpgradeable, AssetMatc
         LibOrder.Order memory orderRight,
         bytes32 leftOrderKeyHash,
         bytes32 rightOrderKeyHash,
-        LibOrderDataV2.DataV2 memory leftOrderData,
-        LibOrderDataV2.DataV2 memory rightOrderData
+        LibOrderDataV3.DataV3 memory leftOrderData,
+        LibOrderDataV3.DataV3 memory rightOrderData
     ) internal returns (LibFill.FillResult memory) {
         uint leftOrderFill = getOrderFill(orderLeft, leftOrderKeyHash);
         uint rightOrderFill = getOrderFill(orderRight, rightOrderKeyHash);
@@ -209,11 +211,11 @@ abstract contract ExchangeV2Core is Initializable, OwnableUpgradeable, AssetMatc
     function validateFull(LibOrder.Order memory order, bytes memory signature) internal view {
         LibOrder.validate(order);
 
+        LibOrderDataV3.DataV3 memory dataOrder = LibOrderData.parse(order);
         //no need to validate signature of an on-chain order
-        if (isTheSameAsOnChain(order, LibOrder.hashKey(order))) {
+        if (dataOrder.isOnChain && isTheSameAsOnChain(order, LibOrder.hashKey(order))) {
             return;
-        } 
-
+        }
         validate(order, signature);
     }
 
@@ -236,7 +238,7 @@ abstract contract ExchangeV2Core is Initializable, OwnableUpgradeable, AssetMatc
     }
 
     /// @dev Calculates total make amount of order, including fees and fill
-    function getTotalValue(LibOrder.Order memory order, bytes32 hash, LibOrderDataV2.DataV2 memory dataOrder) internal view returns(uint) {
+    function getTotalValue(LibOrder.Order memory order, bytes32 hash, LibOrderDataV3.DataV3 memory dataOrder) internal view returns(uint) {
         (uint remainingMake, ) = LibOrder.calculateRemaining(order, getOrderFill(order, hash), dataOrder.isMakeFill);
         uint totalAmount = calculateTotalAmount(remainingMake, getOrderProtocolFee(order, hash), dataOrder.originFees);
         return totalAmount;
@@ -285,7 +287,7 @@ abstract contract ExchangeV2Core is Initializable, OwnableUpgradeable, AssetMatc
         return false;
     }
 
-    function orderNotFilled(LibOrder.Order memory order, bytes32 hash, LibOrderDataV2.DataV2 memory dataOrder) internal view returns(bool){
+    function orderNotFilled(LibOrder.Order memory order, bytes32 hash, LibOrderDataV3.DataV3 memory dataOrder) internal view returns(bool){
         uint value;
         if (dataOrder.isMakeFill) {
             value = order.makeAsset.value;
