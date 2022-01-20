@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@openzeppelin/contracts-upgradeable": "3.4.0",
-    "@rarible/exchange-interfaces": "0.2.0",
+    "@openzeppelin/hardhat-upgrades": "^1.13.0",
+    "@rarible/exchange-interfaces": "0.4.0",
     "@rarible/lib-asset": "^0.1.2",
     "@rarible/libraries": "^0.1.2",
     "@rarible/royalties": "^0.7.4",
@@ -19,11 +20,18 @@
   },
   "devDependencies": {
     "@daonomic/tests-common": "0.2.2",
+    "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
+    "@nomiclabs/hardhat-truffle5": "^2.0.3",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
     "@openzeppelin/truffle-upgrades": "^1.8.0",
     "@truffle/hdwallet-provider": "1.4.0",
+    "ethers": "^5.5.3",
+    "hardhat": "^2.8.3",
+    "hardhat-deploy": "^0.9.24",
     "sol-merger": "^3.1.0",
     "truffle-assertions": "0.9.2",
-    "truffle-plugin-verify": "0.5.7"
+    "truffle-plugin-verify": "0.5.7",
+    "web3": "^1.7.0"
   },
   "publishConfig": {
     "access": "public"

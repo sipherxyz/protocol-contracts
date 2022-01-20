@@ -1,4 +1,3 @@
-const { deployProxy, upgradeProxy } = require('@openzeppelin/truffle-upgrades');
 const ExchangeV2 = artifacts.require("ExchangeV2.sol");
 const TestERC20 = artifacts.require("TestERC20.sol");
 const TestERC721 = artifacts.require("TestERC721.sol");
@@ -19,6 +18,7 @@ const EIP712 = require("../EIP712");
 const ZERO = "0x0000000000000000000000000000000000000000";
 const { expectThrow, verifyBalanceChange } = require("@daonomic/tests-common");
 const { ETH, ERC20, ERC721, ERC1155, ORDER_DATA_V1, ORDER_DATA_V2, TO_MAKER, TO_TAKER, PROTOCOL, ROYALTY, ORIGIN, PAYOUT, CRYPTO_PUNKS, COLLECTION, enc, id } = require("../assets");
+const { upgrades, ethers } = require('hardhat');
 
 contract("ExchangeV2, sellerFee + buyerFee =  6%,", accounts => {
 	let testing;
@@ -42,7 +42,8 @@ contract("ExchangeV2, sellerFee + buyerFee =  6%,", accounts => {
 		transferProxy = await TransferProxyTest.new();
 		erc20TransferProxy = await ERC20TransferProxyTest.new();
 		royaltiesRegistry = await TestRoyaltiesRegistry.new();
-		testing = await deployProxy(ExchangeV2, [transferProxy.address, erc20TransferProxy.address, 300, community, royaltiesRegistry.address], { initializer: "__ExchangeV2_init" });
+		const ExchangeV2Factory = await ethers.getContractFactory("ExchangeV2");
+		testing = await upgrades.deployProxy(ExchangeV2Factory, [transferProxy.address, erc20TransferProxy.address, 300, community, royaltiesRegistry.address], { initializer: "__ExchangeV2_init" });
 		transferManagerTest = await RaribleTransferManagerTest.new();
 		t1 = await TestERC20.new();
 		t2 = await TestERC20.new();
@@ -63,7 +64,6 @@ contract("ExchangeV2, sellerFee + buyerFee =  6%,", accounts => {
 		it("eth orders work, expect throw, not enough eth ", async () => {
     	await t1.mint(accounts[1], 100);
     	await t1.approve(erc20TransferProxy.address, 10000000, { from: accounts[1] });
-
     	const right = Order(accounts[1], Asset(ERC20, enc(t1.address), 100), ZERO, Asset(ETH, "0x", 200), 1, 0, 0, "0xffffffff", "0x");
     	const left = Order(accounts[2], Asset(ETH, "0x", 200), ZERO, Asset(ERC20, enc(t1.address), 100), 1, 0, 0, "0xffffffff", "0x");
     	await expectThrow(

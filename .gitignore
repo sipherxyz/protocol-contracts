@@ -1,3 +1,10 @@
 .idea
 *.iml
 node_modules
+
+## build
+artifacts
+cache
+
+## settings
+.vscode
