@@ -3,8 +3,7 @@ import { DeployFunction } from "hardhat-deploy/types";
 import { hashId, readContractAddress } from "../utils/util";
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
-  const { deployments, getNamedAccounts, getUnnamedAccounts, ethers, network } =
-    hre;
+  const { deployments, getNamedAccounts, getUnnamedAccounts, ethers } = hre;
   const { deploy } = deployments;
 
   const { deployer } = await getNamedAccounts();
@@ -56,21 +55,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       assetMatcherCollection.address
     )
   ).wait();
-
-  // Add exchange to operator
-  const TransferProxy = await ethers.getContractAt(
-    "TransferProxy",
-    transferProxyInfo.address,
-    deployer
-  );
-  await (await TransferProxy.addOperator(deployResult.address)).wait();
-
-  const ERC20TransferProxy = await ethers.getContractAt(
-    "ERC20TransferProxy",
-    erc20TransferProxyInfo.address,
-    deployer
-  );
-  await (await ERC20TransferProxy.addOperator(deployResult.address)).wait();
 };
 export default func;
-func.tags = ["RoyaltiesRegistry"];
+func.tags = ["ExchangeV2"];
