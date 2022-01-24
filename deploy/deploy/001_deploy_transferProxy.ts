@@ -18,7 +18,11 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     deployResult.address,
     deployer
   );
-  await contract.__OperatorRole_init();
+  try {
+    await (await contract.__OperatorRole_init()).wait();
+  } catch (err) {
+    console.log("Already initialized, skipping");
+  }
 };
 export default func;
 func.tags = ["TransferProxy"];

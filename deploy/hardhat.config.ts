@@ -7,6 +7,11 @@ import "hardhat-deploy";
 import "@openzeppelin/hardhat-upgrades";
 import "@nomiclabs/hardhat-truffle5";
 import "@nomiclabs/hardhat-ethers";
+import path from "path";
+import dotenv from "dotenv";
+dotenv.config({
+  path: path.join(__dirname, "../.env"),
+});
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -24,6 +29,14 @@ const config: HardhatUserConfig = {
     },
     hardhat: {
       allowUnlimitedContractSize: false,
+    },
+    rinkeby: {
+      url: `https://rinkeby.infura.io/v3/${process.env.INFURA_KEY}`,
+      accounts: [
+        process.env.DEFAULT_PRIVATE_KEY as string,
+        process.env.TEST_PRIVATE_KEY as string,
+      ],
+      chainId: 4,
     },
   },
 

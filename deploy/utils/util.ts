@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 
+import { ethers } from "ethers";
+
 /**
  *
  * @param contractName name of the contract
@@ -10,7 +12,7 @@ import path from "path";
 const readContractAddress = (contractName: string, network = "hardhat") => {
   const filePath = path.join(
     __dirname,
-    "deploy/deployments",
+    "../deployments",
     network,
     `${contractName}.json`
   );
@@ -26,4 +28,8 @@ const readContractAddress = (contractName: string, network = "hardhat") => {
   return address;
 };
 
-export { readContractAddress };
+const hashId = (str: string) => {
+  return `${ethers.utils.id(str).substring(0, 10)}`;
+};
+
+export { readContractAddress, hashId };

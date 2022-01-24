@@ -1,10 +1,14 @@
 .idea
 *.iml
 node_modules
+.env
 
 ## build
 artifacts
 cache
+
+## dev deployment
+**/deployments/hardhat
 
 ## settings
 .vscode
