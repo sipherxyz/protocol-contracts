@@ -11,21 +11,16 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   const [recipient] = await getUnnamedAccounts();
 
-  const transferProxyInfo = readContractAddress("TransferProxy", network.name);
+  const transferProxyInfo = await hre.ethers.getContract("TransferProxy");
 
-  const erc20TransferProxyInfo = readContractAddress(
-    "ERC20TransferProxy",
-    network.name
+  const erc20TransferProxyInfo = await hre.ethers.getContract(
+    "ERC20TransferProxy"
   );
 
-  const royaltyRegistryInfo = readContractAddress(
-    "RoyaltiesRegistry",
-    network.name
-  );
+  const royaltyRegistryInfo = await hre.ethers.getContract("RoyaltiesRegistry");
 
-  const assetMatcherCollection = readContractAddress(
-    "AssetMatcherCollection",
-    network.name
+  const assetMatcherCollection = await hre.ethers.getContract(
+    "AssetMatcherCollection"
   );
 
   const deployResult = await deploy("ExchangeV2", {
@@ -64,14 +59,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   // Add exchange to operator
   const TransferProxy = await ethers.getContractAt(
-    transferProxyInfo.abi,
+    "TransferProxy",
     transferProxyInfo.address,
     deployer
   );
   await (await TransferProxy.addOperator(deployResult.address)).wait();
 
   const ERC20TransferProxy = await ethers.getContractAt(
-    erc20TransferProxyInfo.abi,
+    "ERC20TransferProxy",
     erc20TransferProxyInfo.address,
     deployer
   );
