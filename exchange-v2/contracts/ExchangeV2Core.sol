@@ -36,6 +36,20 @@ abstract contract ExchangeV2Core is Initializable, OwnableUpgradeable, AssetMatc
         emit Cancel(orderKeyHash, order.maker, order.makeAsset.assetType, order.takeAsset.assetType);
     }
 
+    function _cancel(LibOrder.Order memory order) internal {
+        require(_msgSender() == order.maker, "not a maker");
+        require(order.salt != 0, "0 salt can't be used");
+        bytes32 orderKeyHash = LibOrder.hashKey(order);
+        fills[orderKeyHash] = UINT256_MAX;
+        emit Cancel(orderKeyHash, order.maker, order.makeAsset.assetType, order.takeAsset.assetType);
+    }
+
+    function cancelMultiple(LibOrder.Order[] memory orders) external {
+        for(uint i = 0; i < orders.length;i++) {
+            _cancel(orders[i]);
+        }
+    }
+
     function hashNonce(address orderMaker, address tokenAddress, uint256 tokenId) pure internal returns (bytes32) {
         return keccak256(abi.encode(orderMaker, tokenAddress, tokenId));
     }
