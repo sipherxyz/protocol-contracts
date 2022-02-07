@@ -24,6 +24,7 @@ library LibOrder {
         uint end;
         bytes4 dataType;
         bytes data;
+        uint nonce;
     }
 
     function calculateRemaining(Order memory order, uint fill, bool isMakeFill) internal pure returns (uint makeValue, uint takeValue) {

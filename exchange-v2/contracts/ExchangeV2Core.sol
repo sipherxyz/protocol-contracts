@@ -17,11 +17,15 @@ abstract contract ExchangeV2Core is Initializable, OwnableUpgradeable, AssetMatc
 
     uint256 private constant UINT256_MAX = 2 ** 256 - 1;
 
+    // Order minimum valid nonce
+    mapping(bytes32 => uint) public minNonces;
+
     //state of the orders
     mapping(bytes32 => uint) public fills;
 
     //events
     event Cancel(bytes32 hash, address maker, LibAsset.AssetType makeAssetType, LibAsset.AssetType takeAssetType);
+    event CancelAll(bytes32 hash, address orderMaker, address tokenAddress, uint256 tokenId, uint256 minNonce);
     event Match(bytes32 leftHash, bytes32 rightHash, address leftMaker, address rightMaker, uint newLeftFill, uint newRightFill, LibAsset.AssetType leftAsset, LibAsset.AssetType rightAsset);
 
     function cancel(LibOrder.Order memory order) external {
@@ -30,6 +34,17 @@ abstract contract ExchangeV2Core is Initializable, OwnableUpgradeable, AssetMatc
         bytes32 orderKeyHash = LibOrder.hashKey(order);
         fills[orderKeyHash] = UINT256_MAX;
         emit Cancel(orderKeyHash, order.maker, order.makeAsset.assetType, order.takeAsset.assetType);
+    }
+
+    function hashNonce(address orderMaker, address tokenAddress, uint256 tokenId) pure internal returns (bytes32) {
+        return keccak256(abi.encode(orderMaker, tokenAddress, tokenId));
+    }
+
+    function cancelAll(address orderMaker, address tokenAddress, uint256 tokenId, uint256 minNonce) external {
+        require(_msgSender() == orderMaker, "not maker");
+        bytes32 minNonceHash = hashNonce(orderMaker, tokenAddress, tokenId);
+        minNonces[minNonceHash] = minNonce;
+        emit CancelAll(minNonceHash, orderMaker, tokenAddress, tokenId, minNonce);
     }
 
     function matchOrders(
@@ -124,6 +139,17 @@ abstract contract ExchangeV2Core is Initializable, OwnableUpgradeable, AssetMatc
 
     function validateFull(LibOrder.Order memory order, bytes memory signature) internal view {
         LibOrder.validate(order);
+        if(order.takeAsset.assetType.assetClass == LibAsset.ERC721_ASSET_CLASS || order.takeAsset.assetType.assetClass == LibAsset.ERC1155_ASSET_CLASS) {
+            (address tokenAddress, uint tokenId) = abi.decode(order.takeAsset.assetType.data, (address, uint));
+            bytes32 minNonceHash = hashNonce(order.taker, tokenAddress, tokenId);
+            require(order.nonce >= minNonces[minNonceHash]);
+        }
+        if(order.makeAsset.assetType.assetClass == LibAsset.ERC721_ASSET_CLASS || order.makeAsset.assetType.assetClass == LibAsset.ERC1155_ASSET_CLASS) {
+            (address tokenAddress, uint tokenId) = abi.decode(order.makeAsset.assetType.data, (address, uint));
+            bytes32 minNonceHash = hashNonce(order.maker, tokenAddress, tokenId);
+            require(order.nonce >= minNonces[minNonceHash]);
+        }
+        // Any idea for lazy mint?
         validate(order, signature);
     }
 
