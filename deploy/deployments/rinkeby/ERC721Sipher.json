@@ -1,5 +1,5 @@
 {
-  "address": "0x976Bb94Ae5b870e79b251C7425FA65d37670d6b4",
+  "address": "0xF6969dfD14D019D475265135dac4E85FA2efa203",
   "abi": [
     {
       "anonymous": false,
@@ -117,6 +117,131 @@
         {
           "indexed": true,
           "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "approved",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "ApprovalForAll",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "symbol",
+          "type": "string"
+        }
+      ],
+      "name": "CreateERC721Sipher",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "internalType": "address payable",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "internalType": "uint96",
+              "name": "value",
+              "type": "uint96"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct LibPart.Part[]",
+          "name": "creators",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "Creators",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "hasApproval",
+          "type": "bool"
+        }
+      ],
+      "name": "DefaultApproval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
           "name": "previousOwner",
           "type": "address"
         },
@@ -134,10 +259,10 @@
       "anonymous": false,
       "inputs": [
         {
-          "indexed": true,
-          "internalType": "address",
-          "name": "token",
-          "type": "address"
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
         },
         {
           "components": [
@@ -158,7 +283,7 @@
           "type": "tuple[]"
         }
       ],
-      "name": "RoyaltiesSetForContract",
+      "name": "RoyaltiesSet",
       "type": "event"
     },
     {
@@ -167,7 +292,13 @@
         {
           "indexed": true,
           "internalType": "address",
-          "name": "token",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
           "type": "address"
         },
         {
@@ -175,45 +306,45 @@
           "internalType": "uint256",
           "name": "tokenId",
           "type": "uint256"
-        },
-        {
-          "components": [
-            {
-              "internalType": "address payable",
-              "name": "account",
-              "type": "address"
-            },
-            {
-              "internalType": "uint96",
-              "name": "value",
-              "type": "uint96"
-            }
-          ],
-          "indexed": false,
-          "internalType": "struct LibPart.Part[]",
-          "name": "royalties",
-          "type": "tuple[]"
         }
       ],
-      "name": "RoyaltiesSetForToken",
+      "name": "Transfer",
       "type": "event"
     },
     {
-      "inputs": [],
-      "name": "__RoyaltiesRegistry_init",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
       "inputs": [
         {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_symbol",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "baseURI",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "contractURI",
+          "type": "string"
+        },
+        {
           "internalType": "address",
-          "name": "token",
+          "name": "transferProxy",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "lazyTransferProxy",
           "type": "address"
         }
       ],
-      "name": "clearRoyaltiesType",
+      "name": "__ERC721Sipher_init",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -222,16 +353,16 @@
       "inputs": [
         {
           "internalType": "address",
-          "name": "token",
+          "name": "to",
           "type": "address"
         },
         {
           "internalType": "uint256",
-          "name": "royaltiesType",
+          "name": "tokenId",
           "type": "uint256"
         }
       ],
-      "name": "forceSetRoyaltiesType",
+      "name": "approve",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -240,11 +371,69 @@
       "inputs": [
         {
           "internalType": "address",
-          "name": "token",
+          "name": "owner",
           "type": "address"
         }
       ],
-      "name": "getProvider",
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "baseURI",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "burn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "contractURI",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getApproved",
       "outputs": [
         {
           "internalType": "address",
@@ -258,17 +447,12 @@
     {
       "inputs": [
         {
-          "internalType": "address",
-          "name": "token",
-          "type": "address"
-        },
-        {
           "internalType": "uint256",
-          "name": "tokenId",
+          "name": "_id",
           "type": "uint256"
         }
       ],
-      "name": "getRoyalties",
+      "name": "getCreators",
       "outputs": [
         {
           "components": [
@@ -288,23 +472,141 @@
           "type": "tuple[]"
         }
       ],
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getSipherV2Royalties",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address payable",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "internalType": "uint96",
+              "name": "value",
+              "type": "uint96"
+            }
+          ],
+          "internalType": "struct LibPart.Part[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "inputs": [
         {
           "internalType": "address",
-          "name": "token",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "operator",
           "type": "address"
         }
       ],
-      "name": "getRoyaltiesType",
+      "name": "isApprovedForAll",
       "outputs": [
         {
-          "internalType": "uint256",
+          "internalType": "bool",
           "name": "",
-          "type": "uint256"
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "tokenURI",
+              "type": "string"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address payable",
+                  "name": "account",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint96",
+                  "name": "value",
+                  "type": "uint96"
+                }
+              ],
+              "internalType": "struct LibPart.Part[]",
+              "name": "creators",
+              "type": "tuple[]"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address payable",
+                  "name": "account",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint96",
+                  "name": "value",
+                  "type": "uint96"
+                }
+              ],
+              "internalType": "struct LibPart.Part[]",
+              "name": "royalties",
+              "type": "tuple[]"
+            },
+            {
+              "internalType": "bytes[]",
+              "name": "signatures",
+              "type": "bytes[]"
+            }
+          ],
+          "internalType": "struct LibERC721LazyMint.Mint721Data",
+          "name": "data",
+          "type": "tuple"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "name": "mintAndTransfer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
         }
       ],
       "stateMutability": "view",
@@ -313,6 +615,25 @@
     {
       "inputs": [],
       "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
       "outputs": [
         {
           "internalType": "address",
@@ -333,36 +654,27 @@
     {
       "inputs": [
         {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_salePrice",
+          "type": "uint256"
+        }
+      ],
+      "name": "royaltyInfo",
+      "outputs": [
+        {
           "internalType": "address",
-          "name": "",
+          "name": "receiver",
           "type": "address"
-        }
-      ],
-      "name": "royaltiesByToken",
-      "outputs": [
+        },
         {
-          "internalType": "bool",
-          "name": "initialized",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes32",
-          "name": "",
-          "type": "bytes32"
-        }
-      ],
-      "name": "royaltiesByTokenAndTokenId",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "initialized",
-          "type": "bool"
+          "internalType": "uint256",
+          "name": "royaltyAmount",
+          "type": "uint256"
         }
       ],
       "stateMutability": "view",
@@ -372,11 +684,112 @@
       "inputs": [
         {
           "internalType": "address",
-          "name": "",
+          "name": "from",
           "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
         }
       ],
-      "name": "royaltiesProviders",
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_data",
+          "type": "bytes"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "setApprovalForAll",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenByIndex",
       "outputs": [
         {
           "internalType": "uint256",
@@ -391,16 +804,77 @@
       "inputs": [
         {
           "internalType": "address",
-          "name": "token",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenOfOwnerByIndex",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenURI",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
           "type": "address"
         },
         {
           "internalType": "address",
-          "name": "provider",
+          "name": "to",
           "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
         }
       ],
-      "name": "setProviderByToken",
+      "name": "transferFrom",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -408,29 +882,73 @@
     {
       "inputs": [
         {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "tokenURI",
+              "type": "string"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address payable",
+                  "name": "account",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint96",
+                  "name": "value",
+                  "type": "uint96"
+                }
+              ],
+              "internalType": "struct LibPart.Part[]",
+              "name": "creators",
+              "type": "tuple[]"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address payable",
+                  "name": "account",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint96",
+                  "name": "value",
+                  "type": "uint96"
+                }
+              ],
+              "internalType": "struct LibPart.Part[]",
+              "name": "royalties",
+              "type": "tuple[]"
+            },
+            {
+              "internalType": "bytes[]",
+              "name": "signatures",
+              "type": "bytes[]"
+            }
+          ],
+          "internalType": "struct LibERC721LazyMint.Mint721Data",
+          "name": "data",
+          "type": "tuple"
+        },
+        {
           "internalType": "address",
-          "name": "token",
+          "name": "from",
           "type": "address"
         },
         {
-          "components": [
-            {
-              "internalType": "address payable",
-              "name": "account",
-              "type": "address"
-            },
-            {
-              "internalType": "uint96",
-              "name": "value",
-              "type": "uint96"
-            }
-          ],
-          "internalType": "struct LibPart.Part[]",
-          "name": "royalties",
-          "type": "tuple[]"
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
         }
       ],
-      "name": "setRoyaltiesByToken",
+      "name": "transferFromOrMint",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -444,6 +962,29 @@
         }
       ],
       "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        }
+      ],
+      "name": "updateAccount",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -470,41 +1011,79 @@
       "type": "constructor"
     }
   ],
-  "transactionHash": "0xa5a0a2cff176b4362ebe0b5ac0dabb65bbb271873a44aa25c5987cb660003488",
+  "transactionHash": "0xc0dbe3f168cb120cae31c4c836e49dbf16e155197eb58cf27d119a1a0b73ad4a",
   "receipt": {
     "to": null,
     "from": "0xB6B61613268921913A5c01dF94D21D4de34e84cE",
-    "contractAddress": "0x976Bb94Ae5b870e79b251C7425FA65d37670d6b4",
-    "transactionIndex": 75,
-    "gasUsed": "592263",
-    "logsBloom": "0x00000000000000000000000000000000000008000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000001000000000000000000000000000000000000120000000000000000000800000000000000000000000000000000400000000000000000000000000000000000000080100000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000",
-    "blockHash": "0x7c43112e1b887723649ffda6c73fe6e957b044a48226da2913090f9b2a13a005",
-    "transactionHash": "0xa5a0a2cff176b4362ebe0b5ac0dabb65bbb271873a44aa25c5987cb660003488",
+    "contractAddress": "0xF6969dfD14D019D475265135dac4E85FA2efa203",
+    "transactionIndex": 44,
+    "gasUsed": "900222",
+    "logsBloom": "0x00000800000000000000000000000000000008000100000000c00000000000000000000000000000000000000000000000000000000000000000000000000001000080000000000000000000000200000801000000000000400000000000000000000000120040000080001000000800000000000000000000000000000001400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000420000000000000000000000000000000000000000000000010200000000001000000",
+    "blockHash": "0xd8dec4dba361df0db7965f2343df21aa02715a4e56a34d05843364f9d45da14e",
+    "transactionHash": "0xc0dbe3f168cb120cae31c4c836e49dbf16e155197eb58cf27d119a1a0b73ad4a",
     "logs": [
       {
-        "transactionIndex": 75,
-        "blockNumber": 10137286,
-        "transactionHash": "0xa5a0a2cff176b4362ebe0b5ac0dabb65bbb271873a44aa25c5987cb660003488",
-        "address": "0x976Bb94Ae5b870e79b251C7425FA65d37670d6b4",
+        "transactionIndex": 44,
+        "blockNumber": 10137296,
+        "transactionHash": "0xc0dbe3f168cb120cae31c4c836e49dbf16e155197eb58cf27d119a1a0b73ad4a",
+        "address": "0xF6969dfD14D019D475265135dac4E85FA2efa203",
         "topics": [
           "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
           "0x0000000000000000000000000000000000000000000000000000000000000000",
           "0x000000000000000000000000b6b61613268921913a5c01df94d21d4de34e84ce"
         ],
         "data": "0x",
-        "logIndex": 142,
-        "blockHash": "0x7c43112e1b887723649ffda6c73fe6e957b044a48226da2913090f9b2a13a005"
+        "logIndex": 78,
+        "blockHash": "0xd8dec4dba361df0db7965f2343df21aa02715a4e56a34d05843364f9d45da14e"
+      },
+      {
+        "transactionIndex": 44,
+        "blockNumber": 10137296,
+        "transactionHash": "0xc0dbe3f168cb120cae31c4c836e49dbf16e155197eb58cf27d119a1a0b73ad4a",
+        "address": "0xF6969dfD14D019D475265135dac4E85FA2efa203",
+        "topics": [
+          "0x270dbb8ba4292910ae92862466486be25c355c837270a3d8824b36a8bc7c653b",
+          "0x00000000000000000000000050630170bf3fed2195ea6b22d8dc7879fd9908f8"
+        ],
+        "data": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "logIndex": 79,
+        "blockHash": "0xd8dec4dba361df0db7965f2343df21aa02715a4e56a34d05843364f9d45da14e"
+      },
+      {
+        "transactionIndex": 44,
+        "blockNumber": 10137296,
+        "transactionHash": "0xc0dbe3f168cb120cae31c4c836e49dbf16e155197eb58cf27d119a1a0b73ad4a",
+        "address": "0xF6969dfD14D019D475265135dac4E85FA2efa203",
+        "topics": [
+          "0x270dbb8ba4292910ae92862466486be25c355c837270a3d8824b36a8bc7c653b",
+          "0x000000000000000000000000ca2e95f9d5479ea7da0e542c39134c4f471ee1f7"
+        ],
+        "data": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "logIndex": 80,
+        "blockHash": "0xd8dec4dba361df0db7965f2343df21aa02715a4e56a34d05843364f9d45da14e"
+      },
+      {
+        "transactionIndex": 44,
+        "blockNumber": 10137296,
+        "transactionHash": "0xc0dbe3f168cb120cae31c4c836e49dbf16e155197eb58cf27d119a1a0b73ad4a",
+        "address": "0xF6969dfD14D019D475265135dac4E85FA2efa203",
+        "topics": [
+          "0x1c82072046345795ece476153b70942e74da1b15d7977faabb077e8cad76d8b2"
+        ],
+        "data": "0x000000000000000000000000b6b61613268921913a5c01df94d21d4de34e84ce000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000006536970686572000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000045241524900000000000000000000000000000000000000000000000000000000",
+        "logIndex": 81,
+        "blockHash": "0xd8dec4dba361df0db7965f2343df21aa02715a4e56a34d05843364f9d45da14e"
       }
     ],
-    "blockNumber": 10137286,
-    "cumulativeGasUsed": "10429059",
+    "blockNumber": 10137296,
+    "cumulativeGasUsed": "5778760",
     "status": 1,
     "byzantium": true
   },
   "args": [
-    "0x8bcF8b0e420E69C4301b354948C93c8487D203d3",
+    "0x534B84D64c8F5381C0fe5F1f9fDDBB9D413E8406",
     "0x855CbAFA88Dff44Ebfc6852735aA0f2199Fd5826",
-    "0x27fff8ab"
+    "0x37ed5d7600000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000140000000000000000000000000000000000000000000000000000000000000018000000000000000000000000050630170bf3fed2195ea6b22d8dc7879fd9908f8000000000000000000000000ca2e95f9d5479ea7da0e542c39134c4f471ee1f700000000000000000000000000000000000000000000000000000000000000065369706865720000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000452415249000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006697066733a2f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
   ],
   "numDeployments": 1,
   "solcInputHash": "1635d55d57a0a2552952c0d22586ed23",
@@ -512,10 +1091,17 @@
   "bytecode": "0x6080604052604051610aaa380380610aaa8339818101604052606081101561002657600080fd5b8151602083015160408085018051915193959294830192918464010000000082111561005157600080fd5b90830190602082018581111561006657600080fd5b825164010000000081118282018810171561008057600080fd5b82525081516020918201929091019080838360005b838110156100ad578181015183820152602001610095565b50505050905090810190601f1680156100da5780820380516001836020036101000a031916815260200191505b50604052508491508290506100ee826101bf565b8051156101a6576000826001600160a01b0316826040518082805190602001908083835b602083106101315780518252601f199092019160209182019101610112565b6001836020036101000a038019825116818451168082178552505050505050905001915050600060405180830381855af49150503d8060008114610191576040519150601f19603f3d011682016040523d82523d6000602084013e610196565b606091505b50509050806101a457600080fd5b505b506101ae9050565b6101b782610231565b505050610291565b6101d28161025560201b6104bb1760201c565b61020d5760405162461bcd60e51b8152600401808060200182810382526036815260200180610a746036913960400191505060405180910390fd5b7f360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc55565b7fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d610355565b6000813f7fc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a47081811480159061028957508115155b949350505050565b6107d4806102a06000396000f3fe60806040526004361061005e5760003560e01c80635c60da1b116100435780635c60da1b146101425780638f28397014610180578063f851a440146101c05761006d565b80633659cfe6146100755780634f1ef286146100b55761006d565b3661006d5761006b6101d5565b005b61006b6101d5565b34801561008157600080fd5b5061006b6004803603602081101561009857600080fd5b503573ffffffffffffffffffffffffffffffffffffffff166101ef565b61006b600480360360408110156100cb57600080fd5b73ffffffffffffffffffffffffffffffffffffffff823516919081019060408101602082013564010000000081111561010357600080fd5b82018360208201111561011557600080fd5b8035906020019184600183028401116401000000008311171561013757600080fd5b509092509050610243565b34801561014e57600080fd5b50610157610317565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b34801561018c57600080fd5b5061006b600480360360208110156101a357600080fd5b503573ffffffffffffffffffffffffffffffffffffffff1661036e565b3480156101cc57600080fd5b50610157610476565b6101dd6104f7565b6101ed6101e861058b565b6105b0565b565b6101f76105d4565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561023857610233816105f9565b610240565b6102406101d5565b50565b61024b6105d4565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561030a57610287836105f9565b60008373ffffffffffffffffffffffffffffffffffffffff1683836040518083838082843760405192019450600093509091505080830381855af49150503d80600081146102f1576040519150601f19603f3d011682016040523d82523d6000602084013e6102f6565b606091505b505090508061030457600080fd5b50610312565b6103126101d5565b505050565b60006103216105d4565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156103635761035c61058b565b905061036b565b61036b6101d5565b90565b6103766105d4565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156102385773ffffffffffffffffffffffffffffffffffffffff8116610415576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252603a8152602001806106ed603a913960400191505060405180910390fd5b7f7e644d79422f17c01e4894b5f4f588d331ebfa28653d42ae832dc59e38c9798f61043e6105d4565b6040805173ffffffffffffffffffffffffffffffffffffffff928316815291841660208301528051918290030190a161023381610646565b60006104806105d4565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156103635761035c6105d4565b6000813f7fc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a4708181148015906104ef57508115155b949350505050565b6104ff6105d4565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415610583576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252604281526020018061075d6042913960600191505060405180910390fd5b6101ed6101ed565b7f360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc5490565b3660008037600080366000845af43d6000803e8080156105cf573d6000f35b3d6000fd5b7fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d61035490565b6106028161066a565b60405173ffffffffffffffffffffffffffffffffffffffff8216907fbc7cd75a20ee27fd9adebab32041f755214dbc6bffa90cc0225b39da2e5c2d3b90600090a250565b7fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d610355565b610673816104bb565b6106c8576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260368152602001806107276036913960400191505060405180910390fd5b7f360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc5556fe5472616e73706172656e745570677261646561626c6550726f78793a206e65772061646d696e20697320746865207a65726f20616464726573735570677261646561626c6550726f78793a206e657720696d706c656d656e746174696f6e206973206e6f74206120636f6e74726163745472616e73706172656e745570677261646561626c6550726f78793a2061646d696e2063616e6e6f742066616c6c6261636b20746f2070726f787920746172676574a2646970667358221220b141ef72de179b8b56cef31601d40ff2875391088197e73cac39eba1ddcd0fdd64736f6c634300070600335570677261646561626c6550726f78793a206e657720696d706c656d656e746174696f6e206973206e6f74206120636f6e7472616374",
   "deployedBytecode": "0x60806040526004361061005e5760003560e01c80635c60da1b116100435780635c60da1b146101425780638f28397014610180578063f851a440146101c05761006d565b80633659cfe6146100755780634f1ef286146100b55761006d565b3661006d5761006b6101d5565b005b61006b6101d5565b34801561008157600080fd5b5061006b6004803603602081101561009857600080fd5b503573ffffffffffffffffffffffffffffffffffffffff166101ef565b61006b600480360360408110156100cb57600080fd5b73ffffffffffffffffffffffffffffffffffffffff823516919081019060408101602082013564010000000081111561010357600080fd5b82018360208201111561011557600080fd5b8035906020019184600183028401116401000000008311171561013757600080fd5b509092509050610243565b34801561014e57600080fd5b50610157610317565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b34801561018c57600080fd5b5061006b600480360360208110156101a357600080fd5b503573ffffffffffffffffffffffffffffffffffffffff1661036e565b3480156101cc57600080fd5b50610157610476565b6101dd6104f7565b6101ed6101e861058b565b6105b0565b565b6101f76105d4565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561023857610233816105f9565b610240565b6102406101d5565b50565b61024b6105d4565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141561030a57610287836105f9565b60008373ffffffffffffffffffffffffffffffffffffffff1683836040518083838082843760405192019450600093509091505080830381855af49150503d80600081146102f1576040519150601f19603f3d011682016040523d82523d6000602084013e6102f6565b606091505b505090508061030457600080fd5b50610312565b6103126101d5565b505050565b60006103216105d4565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156103635761035c61058b565b905061036b565b61036b6101d5565b90565b6103766105d4565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156102385773ffffffffffffffffffffffffffffffffffffffff8116610415576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252603a8152602001806106ed603a913960400191505060405180910390fd5b7f7e644d79422f17c01e4894b5f4f588d331ebfa28653d42ae832dc59e38c9798f61043e6105d4565b6040805173ffffffffffffffffffffffffffffffffffffffff928316815291841660208301528051918290030190a161023381610646565b60006104806105d4565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156103635761035c6105d4565b6000813f7fc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a4708181148015906104ef57508115155b949350505050565b6104ff6105d4565b73ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415610583576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252604281526020018061075d6042913960600191505060405180910390fd5b6101ed6101ed565b7f360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc5490565b3660008037600080366000845af43d6000803e8080156105cf573d6000f35b3d6000fd5b7fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d61035490565b6106028161066a565b60405173ffffffffffffffffffffffffffffffffffffffff8216907fbc7cd75a20ee27fd9adebab32041f755214dbc6bffa90cc0225b39da2e5c2d3b90600090a250565b7fb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d610355565b610673816104bb565b6106c8576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260368152602001806107276036913960400191505060405180910390fd5b7f360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc5556fe5472616e73706172656e745570677261646561626c6550726f78793a206e65772061646d696e20697320746865207a65726f20616464726573735570677261646561626c6550726f78793a206e657720696d706c656d656e746174696f6e206973206e6f74206120636f6e74726163745472616e73706172656e745570677261646561626c6550726f78793a2061646d696e2063616e6e6f742066616c6c6261636b20746f2070726f787920746172676574a2646970667358221220b141ef72de179b8b56cef31601d40ff2875391088197e73cac39eba1ddcd0fdd64736f6c63430007060033",
   "execute": {
-    "methodName": "__RoyaltiesRegistry_init",
-    "args": []
+    "methodName": "__ERC721Sipher_init",
+    "args": [
+      "Sipher",
+      "RARI",
+      "ipfs:/",
+      "",
+      "0x50630170bF3FeD2195Ea6b22d8Dc7879Fd9908F8",
+      "0xca2e95f9D5479EA7da0E542C39134C4f471EE1f7"
+    ]
   },
-  "implementation": "0x8bcF8b0e420E69C4301b354948C93c8487D203d3",
+  "implementation": "0x534B84D64c8F5381C0fe5F1f9fDDBB9D413E8406",
   "devdoc": {
     "details": "This contract implements a proxy that is upgradeable by an admin.  To avoid https://medium.com/nomic-labs-blog/malicious-backdoors-in-ethereum-proxies-62629adf3357[proxy selector clashing], which can potentially be used in an attack, this contract uses the https://blog.openzeppelin.com/the-transparent-proxy-pattern/[transparent proxy pattern]. This pattern implies two things that go hand in hand:  1. If any account other than the admin calls the proxy, the call will be forwarded to the implementation, even if that call matches one of the admin functions exposed by the proxy itself. 2. If the admin calls the proxy, it can access the admin functions, but its calls will never be forwarded to the implementation. If the admin tries to call a function on the implementation it will fail with an error that says \"admin cannot fallback to proxy target\".  These properties mean that the admin account can only be used for admin actions like upgrading the proxy or changing the admin, so it's best if it's a dedicated account that is not used for anything else. This will avoid headaches due to sudden errors when trying to call a function from the proxy implementation.  Our recommendation is for the dedicated account to be an instance of the {ProxyAdmin} contract. If set up this way, you should think of the `ProxyAdmin` instance as the real administrative inerface of your proxy.",
     "events": {
