@@ -10,7 +10,7 @@ import "../LibRoyalties2981.sol";
 
 contract RoyaltiesV2Impl is AbstractRoyalties, RoyaltiesV2, IERC2981 {
 
-    function getRaribleV2Royalties(uint256 id) override external view returns (LibPart.Part[] memory) {
+    function getSipherV2Royalties(uint256 id) override external view returns (LibPart.Part[] memory) {
         return royalties[id];
     }
 

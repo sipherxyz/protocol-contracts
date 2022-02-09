@@ -11,7 +11,7 @@ import "./TransferExecutor.sol";
 import "./ITransferManager.sol";
 import "./lib/LibTransfer.sol";
 
-abstract contract ExchangeV2Core is Initializable, OwnableUpgradeable, AssetMatcher, TransferExecutor, OrderValidator, ITransferManager {
+abstract contract ExchangeCore is Initializable, OwnableUpgradeable, AssetMatcher, TransferExecutor, OrderValidator, ITransferManager {
     using SafeMathUpgradeable for uint;
     using LibTransfer for address;
 

@@ -3,13 +3,13 @@
 pragma solidity >=0.6.2 <0.8.0;
 pragma abicoder v2;
 
-import "@rarible/royalties/contracts/IRoyaltiesProvider.sol";
-import "@rarible/royalties/contracts/LibRoyaltiesV2.sol";
-import "@rarible/royalties/contracts/LibRoyaltiesV1.sol";
-import "@rarible/royalties/contracts/LibRoyalties2981.sol";
-import "@rarible/royalties/contracts/RoyaltiesV1.sol";
-import "@rarible/royalties/contracts/RoyaltiesV2.sol";
-import "@rarible/royalties/contracts/IERC2981.sol";
+import "@sipher/royalties/contracts/IRoyaltiesProvider.sol";
+import "@sipher/royalties/contracts/LibRoyaltiesV2.sol";
+import "@sipher/royalties/contracts/LibRoyaltiesV1.sol";
+import "@sipher/royalties/contracts/LibRoyalties2981.sol";
+import "@sipher/royalties/contracts/RoyaltiesV1.sol";
+import "@sipher/royalties/contracts/RoyaltiesV2.sol";
+import "@sipher/royalties/contracts/IERC2981.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
@@ -168,12 +168,12 @@ contract RoyaltiesRegistry is IRoyaltiesProvider, OwnableUpgradeable {
 
         //case royaltiesType = 2, royalties rarible v2
         if (royaltiesType == 2) {
-            return getRoyaltiesRaribleV2(token,tokenId);
+            return getRoyaltiesSipherV2(token,tokenId);
         }
 
         //case royaltiesType = 3, royalties rarible v1
         if (royaltiesType == 3) {
-            return getRoyaltiesRaribleV1(token, tokenId);
+            return getRoyaltiesSipherV1(token, tokenId);
         }
 
         //case royaltiesType = 4, royalties from external provider
@@ -195,8 +195,8 @@ contract RoyaltiesRegistry is IRoyaltiesProvider, OwnableUpgradeable {
     }
 
     /// @dev tries to get royalties rarible-v2 for token and tokenId
-    function getRoyaltiesRaribleV2(address token, uint tokenId) internal view returns (LibPart.Part[] memory) {
-        try RoyaltiesV2(token).getRaribleV2Royalties(tokenId) returns (LibPart.Part[] memory result) {
+    function getRoyaltiesSipherV2(address token, uint tokenId) internal view returns (LibPart.Part[] memory) {
+        try RoyaltiesV2(token).getSipherV2Royalties(tokenId) returns (LibPart.Part[] memory result) {
             return result;
         } catch {
             return new LibPart.Part[](0);
@@ -204,7 +204,7 @@ contract RoyaltiesRegistry is IRoyaltiesProvider, OwnableUpgradeable {
     }
 
     /// @dev tries to get royalties rarible-v1 for token and tokenId
-    function getRoyaltiesRaribleV1(address token, uint tokenId) internal view returns (LibPart.Part[] memory) {
+    function getRoyaltiesSipherV1(address token, uint tokenId) internal view returns (LibPart.Part[] memory) {
         RoyaltiesV1 v1 = RoyaltiesV1(token);
         address payable[] memory recipients;
         try v1.getFeeRecipients(tokenId) returns (address payable[] memory resultRecipients) {
@@ -226,6 +226,7 @@ contract RoyaltiesRegistry is IRoyaltiesProvider, OwnableUpgradeable {
             result[i].value = uint96(values[i]);
             result[i].account = recipients[i];
         }
+        
         return result;
     }
 

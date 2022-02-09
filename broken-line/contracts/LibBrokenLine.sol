@@ -5,7 +5,7 @@ pragma abicoder v2;
 
 import "@openzeppelin/contracts-upgradeable/math/SignedSafeMathUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/math/SafeMathUpgradeable.sol";
-import "@rarible/lib-broken-line/contracts/LibIntMapping.sol";
+import "@sipher/lib-broken-line/contracts/LibIntMapping.sol";
 
 /**
   * Line describes a linear function, how the user's voice decreases from point (start, bias) with speed slope

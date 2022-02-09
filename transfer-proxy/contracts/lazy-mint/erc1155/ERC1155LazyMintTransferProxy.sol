@@ -3,9 +3,9 @@
 pragma solidity >=0.6.9 <0.8.0;
 pragma abicoder v2;
 
-import "@rarible/exchange-interfaces/contracts/ITransferProxy.sol";
-import "@rarible/lazy-mint/contracts/erc-1155/LibERC1155LazyMint.sol";
-import "@rarible/lazy-mint/contracts/erc-1155/IERC1155LazyMint.sol";
+import "@sipher/exchange-interfaces/contracts/ITransferProxy.sol";
+import "@sipher/lazy-mint/contracts/erc-1155/LibERC1155LazyMint.sol";
+import "@sipher/lazy-mint/contracts/erc-1155/IERC1155LazyMint.sol";
 import "../../roles/OperatorRole.sol";
 
 contract ERC1155LazyMintTransferProxy is OperatorRole, ITransferProxy {

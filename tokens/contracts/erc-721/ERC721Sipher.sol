@@ -5,16 +5,16 @@ pragma abicoder v2;
 
 import "./ERC721Base.sol";
 
-contract ERC721Rarible is ERC721Base {
+contract ERC721Sipher is ERC721Base {
 
-    event CreateERC721Rarible(address owner, string name, string symbol);
+    event CreateERC721Sipher(address owner, string name, string symbol);
 
-    function __ERC721Rarible_init(string memory _name, string memory _symbol, string memory baseURI, string memory contractURI, address transferProxy, address lazyTransferProxy) external initializer {
-        __ERC721Rarible_init_unchained(_name, _symbol, baseURI, contractURI, transferProxy, lazyTransferProxy);
-        emit CreateERC721Rarible(_msgSender(), _name, _symbol);
+    function __ERC721Sipher_init(string memory _name, string memory _symbol, string memory baseURI, string memory contractURI, address transferProxy, address lazyTransferProxy) external initializer {
+        __ERC721Sipher_init_unchained(_name, _symbol, baseURI, contractURI, transferProxy, lazyTransferProxy);
+        emit CreateERC721Sipher(_msgSender(), _name, _symbol);
     }
 
-    function __ERC721Rarible_init_unchained(string memory _name, string memory _symbol, string memory baseURI, string memory contractURI, address transferProxy, address lazyTransferProxy) internal {
+    function __ERC721Sipher_init_unchained(string memory _name, string memory _symbol, string memory baseURI, string memory contractURI, address transferProxy, address lazyTransferProxy) internal {
         _setBaseURI(baseURI);
         __ERC721Lazy_init_unchained();
         __RoyaltiesV2Upgradeable_init_unchained();

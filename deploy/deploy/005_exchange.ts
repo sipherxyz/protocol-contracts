@@ -22,7 +22,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     "AssetMatcherCollection"
   );
 
-  const deployResult = await deploy("ExchangeV2", {
+  const deployResult = await deploy("Exchange", {
     from: deployer,
     log: true,
     proxy: {
@@ -30,7 +30,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       proxyContract: "OpenZeppelinTransparentProxy",
       execute: {
         init: {
-          methodName: "__ExchangeV2_init",
+          methodName: "__Exchange_init",
           args: [
             transferProxyInfo.address,
             erc20TransferProxyInfo.address,
@@ -44,17 +44,17 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     autoMine: true, // speed up deployment on local network (ganache, hardhat), no effect on live networks
   });
 
-  const ExchangeV2 = await ethers.getContractAt(
+  const Exchange = await ethers.getContractAt(
     deployResult.abi,
     deployResult.address,
     deployer
   );
   await (
-    await ExchangeV2.setAssetMatcher(
+    await Exchange.setAssetMatcher(
       hashId("COLLECTION"),
       assetMatcherCollection.address
     )
   ).wait();
 };
 export default func;
-func.tags = ["ExchangeV2"];
+func.tags = ["Exchange"];

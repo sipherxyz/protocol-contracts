@@ -1,5 +1,5 @@
 {
-  "name": "@rarible/libraries",
+  "name": "@sipher/libraries",
   "version": "0.1.2",
   "description": "Solidity libraries used by ExchangeV2 on Rarible",
   "files": [

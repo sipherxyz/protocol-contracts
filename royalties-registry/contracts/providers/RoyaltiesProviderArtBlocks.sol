@@ -3,9 +3,9 @@
 pragma solidity >=0.6.9 <0.8.0;
 pragma abicoder v2;
 
-import "@rarible/royalties/contracts/IRoyaltiesProvider.sol";
+import "@sipher/royalties/contracts/IRoyaltiesProvider.sol";
 import "./RoyaltyArtBlocks.sol";
-import "@rarible/exchange-v2/contracts/lib/BpLibrary.sol";
+import "@sipher/exchange-v2/contracts/lib/BpLibrary.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract RoyaltiesProviderArtBlocks is IRoyaltiesProvider, Ownable {

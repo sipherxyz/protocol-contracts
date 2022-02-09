@@ -5,17 +5,17 @@ pragma abicoder v2;
 
 import "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/math/SafeMathUpgradeable.sol";
-import "@rarible/lib-asset/contracts/LibAsset.sol";
-import "@rarible/royalties/contracts/IRoyaltiesProvider.sol";
-import "@rarible/lazy-mint/contracts/erc-721/LibERC721LazyMint.sol";
-import "@rarible/lazy-mint/contracts/erc-1155/LibERC1155LazyMint.sol";
+import "@sipher/lib-asset/contracts/LibAsset.sol";
+import "@sipher/royalties/contracts/IRoyaltiesProvider.sol";
+import "@sipher/lazy-mint/contracts/erc-721/LibERC721LazyMint.sol";
+import "@sipher/lazy-mint/contracts/erc-1155/LibERC1155LazyMint.sol";
 import "./LibFill.sol";
 import "./LibFeeSide.sol";
 import "./ITransferManager.sol";
 import "./TransferExecutor.sol";
 import "./lib/BpLibrary.sol";
 
-abstract contract RaribleTransferManager is OwnableUpgradeable, ITransferManager {
+abstract contract SipherTransferManager is OwnableUpgradeable, ITransferManager {
     using BpLibrary for uint;
     using SafeMathUpgradeable for uint;
 
@@ -25,7 +25,7 @@ abstract contract RaribleTransferManager is OwnableUpgradeable, ITransferManager
     address public defaultFeeReceiver;
     mapping(address => address) public feeReceivers;
 
-    function __RaribleTransferManager_init_unchained(
+    function __SipherTransferManager_init_unchained(
         uint newProtocolFee,
         address newDefaultFeeReceiver,
         IRoyaltiesProvider newRoyaltiesProvider

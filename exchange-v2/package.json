@@ -1,5 +1,5 @@
 {
-  "name": "@rarible/exchange-v2",
+  "name": "@sipher/exchange-v2",
   "version": "0.4.0",
   "main": "truffle.js",
   "directories": {
@@ -11,11 +11,11 @@
   "dependencies": {
     "@openzeppelin/contracts-upgradeable": "3.4.0",
     "@openzeppelin/hardhat-upgrades": "^1.13.0",
-    "@rarible/exchange-interfaces": "0.4.0",
-    "@rarible/lib-asset": "^0.1.2",
-    "@rarible/libraries": "^0.1.2",
-    "@rarible/royalties": "^0.7.4",
-    "@rarible/royalties-upgradeable": "^0.7.4",
+    "@sipher/exchange-interfaces": "0.4.0",
+    "@sipher/lib-asset": "^0.1.2",
+    "@sipher/libraries": "^0.1.2",
+    "@sipher/royalties": "^0.7.4",
+    "@sipher/royalties-upgradeable": "^0.7.4",
     "eth-sig-util": "^3.0.1"
   },
   "devDependencies": {

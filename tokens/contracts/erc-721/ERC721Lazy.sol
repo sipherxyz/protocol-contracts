@@ -4,9 +4,9 @@ pragma solidity 0.7.6;
 pragma abicoder v2;
 
 import "./ERC721Upgradeable.sol";
-import "@rarible/royalties/contracts/impl/RoyaltiesV2Impl.sol";
-import "@rarible/royalties-upgradeable/contracts/RoyaltiesV2Upgradeable.sol";
-import "@rarible/lazy-mint/contracts/erc-721/IERC721LazyMint.sol";
+import "@sipher/royalties/contracts/impl/RoyaltiesV2Impl.sol";
+import "@sipher/royalties-upgradeable/contracts/RoyaltiesV2Upgradeable.sol";
+import "@sipher/lazy-mint/contracts/erc-721/IERC721LazyMint.sol";
 import "../Mint721Validator.sol";
 
 abstract contract ERC721Lazy is IERC721LazyMint, ERC721Upgradeable, Mint721Validator, RoyaltiesV2Upgradeable, RoyaltiesV2Impl {

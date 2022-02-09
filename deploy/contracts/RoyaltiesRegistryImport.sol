@@ -3,6 +3,6 @@
 pragma solidity 0.7.6;
 pragma abicoder v2;
 
-import "@rarible/royalties-registry/contracts/RoyaltiesRegistry.sol";
-import "@rarible/royalties-registry/contracts/providers/RoyaltiesProviderV2Legacy.sol";
-import "@rarible/royalties-registry/contracts/providers/RoyaltiesProviderArtBlocks.sol";
+import "@sipher/royalties-registry/contracts/RoyaltiesRegistry.sol";
+import "@sipher/royalties-registry/contracts/providers/RoyaltiesProviderV2Legacy.sol";
+import "@sipher/royalties-registry/contracts/providers/RoyaltiesProviderArtBlocks.sol";

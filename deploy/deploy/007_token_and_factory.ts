@@ -15,7 +15,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     "ERC1155LazyMintTransferProxy"
   );
 
-  const ERC721Rarible = await deploy("ERC721Rarible", {
+  const ERC721Sipher = await deploy("ERC721Sipher", {
     from: deployer,
     log: true,
     autoMine: true,
@@ -23,9 +23,9 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       proxyContract: "OpenZeppelinTransparentProxy",
       execute: {
         init: {
-          methodName: "__ERC721Rarible_init",
+          methodName: "__ERC721Sipher_init",
           args: [
-            "Rarible",
+            "Sipher",
             "RARI",
             "ipfs:/",
             "",
@@ -37,14 +37,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     },
   });
 
-  const ERC721RaribleBeacon = await deploy("ERC721RaribleBeacon", {
+  const ERC721SipherBeacon = await deploy("ERC721SipherBeacon", {
     from: deployer,
     log: true,
     autoMine: true,
-    args: [ERC721Rarible.implementation],
+    args: [ERC721Sipher.implementation],
   });
 
-  const ERC1155Rarible = await deploy("ERC721Rarible", {
+  const ERC1155Sipher = await deploy("ERC721Sipher", {
     from: deployer,
     log: true,
     autoMine: true,
@@ -52,9 +52,9 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       proxyContract: "OpenZeppelinTransparentProxy",
       execute: {
         init: {
-          methodName: "__ERC1155Rarible_init",
+          methodName: "__ERC1155Sipher_init",
           args: [
-            "Rarible",
+            "Sipher",
             "RARI",
             "ipfs:/",
             "",
@@ -66,11 +66,11 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     },
   });
 
-  const ERC1155RaribleBeacon = await deploy("ERC1155RaribleBeacon", {
+  const ERC1155SipherBeacon = await deploy("ERC1155SipherBeacon", {
     from: deployer,
     log: true,
     autoMine: true,
-    args: [ERC1155Rarible.implementation],
+    args: [ERC1155Sipher.implementation],
   });
 };
 export default func;

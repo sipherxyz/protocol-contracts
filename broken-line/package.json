@@ -1,5 +1,5 @@
 {
-  "name": "@rarible/lib-broken-line",
+  "name": "@sipher/lib-broken-line",
   "version": "0.3.2",
   "description": "Solidity struct Asset used by ExchangeV2 on Rarible",
   "files": [

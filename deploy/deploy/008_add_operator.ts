@@ -4,7 +4,7 @@ import { DeployFunction } from "hardhat-deploy/types";
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { ethers } = hre;
 
-  const ExchangeV2 = await ethers.getContract("ExchangeV2");
+  const Exchange = await ethers.getContract("Exchange");
   const ERC721LazyMintTransferProxy = await ethers.getContract(
     "ERC721LazyMintTransferProxy"
   );
@@ -13,18 +13,18 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   );
 
   await (
-    await ERC721LazyMintTransferProxy.addOperator(ExchangeV2.address)
+    await ERC721LazyMintTransferProxy.addOperator(Exchange.address)
   ).wait();
   await (
-    await ERC1155LazyMintTransferProxy.addOperator(ExchangeV2.address)
+    await ERC1155LazyMintTransferProxy.addOperator(Exchange.address)
   ).wait();
 
   // Add exchange to operator
   const TransferProxy = await ethers.getContract("TransferProxy");
-  await (await TransferProxy.addOperator(ExchangeV2.address)).wait();
+  await (await TransferProxy.addOperator(Exchange.address)).wait();
 
   const ERC20TransferProxy = await ethers.getContract("ERC20TransferProxy");
-  await (await ERC20TransferProxy.addOperator(ExchangeV2.address)).wait();
+  await (await ERC20TransferProxy.addOperator(Exchange.address)).wait();
 };
 export default func;
 func.tags = ["AddOperator"];

@@ -3,10 +3,10 @@
 pragma solidity >=0.6.9 <0.8.0;
 pragma abicoder v2;
 
-import "@rarible/lib-asset/contracts/LibAsset.sol";
-import "@rarible/exchange-interfaces/contracts/ITransferProxy.sol";
-import "@rarible/exchange-interfaces/contracts/INftTransferProxy.sol";
-import "@rarible/exchange-interfaces/contracts/IERC20TransferProxy.sol";
+import "@sipher/lib-asset/contracts/LibAsset.sol";
+import "@sipher/exchange-interfaces/contracts/ITransferProxy.sol";
+import "@sipher/exchange-interfaces/contracts/INftTransferProxy.sol";
+import "@sipher/exchange-interfaces/contracts/IERC20TransferProxy.sol";
 import "./ITransferExecutor.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";

@@ -1,5 +1,5 @@
 {
-  "name": "@rarible/meta-tx",
+  "name": "@sipher/meta-tx",
   "version": "0.1.2",
   "description": "Provides `gasless` execution methods",
   "files": [

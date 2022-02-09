@@ -5,31 +5,31 @@ pragma abicoder v2;
 
 import "./ERC1155Base.sol";
 
-contract ERC1155Rarible is ERC1155Base {
+contract ERC1155Sipher is ERC1155Base {
     /// @dev true if collection is private, false if public
     bool isPrivate;
 
-    event CreateERC1155Rarible(address owner, string name, string symbol);
-    event CreateERC1155RaribleUser(address owner, string name, string symbol);
+    event CreateERC1155Sipher(address owner, string name, string symbol);
+    event CreateERC1155SipherUser(address owner, string name, string symbol);
 
-    function __ERC1155RaribleUser_init(string memory _name, string memory _symbol, string memory baseURI, string memory contractURI, address[] memory operators, address transferProxy, address lazyTransferProxy) external virtual initializer {
-        __ERC1155Rarible_init_unchained(_name, _symbol, baseURI, contractURI, transferProxy, lazyTransferProxy);
+    function __ERC1155SipherUser_init(string memory _name, string memory _symbol, string memory baseURI, string memory contractURI, address[] memory operators, address transferProxy, address lazyTransferProxy) external virtual initializer {
+        __ERC1155Sipher_init_unchained(_name, _symbol, baseURI, contractURI, transferProxy, lazyTransferProxy);
         for(uint i = 0; i < operators.length; i++) {
             setApprovalForAll(operators[i], true);
         }
 
         isPrivate = true;
-        emit CreateERC1155RaribleUser(_msgSender(), _name, _symbol);
+        emit CreateERC1155SipherUser(_msgSender(), _name, _symbol);
     }
     
-    function __ERC1155Rarible_init(string memory _name, string memory _symbol, string memory baseURI, string memory contractURI, address transferProxy, address lazyTransferProxy) external virtual initializer {
-        __ERC1155Rarible_init_unchained(_name, _symbol, baseURI, contractURI, transferProxy, lazyTransferProxy);
+    function __ERC1155Sipher_init(string memory _name, string memory _symbol, string memory baseURI, string memory contractURI, address transferProxy, address lazyTransferProxy) external virtual initializer {
+        __ERC1155Sipher_init_unchained(_name, _symbol, baseURI, contractURI, transferProxy, lazyTransferProxy);
 
         isPrivate = false;
-        emit CreateERC1155Rarible(_msgSender(), _name, _symbol);
+        emit CreateERC1155Sipher(_msgSender(), _name, _symbol);
     }
 
-    function __ERC1155Rarible_init_unchained(string memory _name, string memory _symbol, string memory baseURI, string memory contractURI, address transferProxy, address lazyTransferProxy) internal {
+    function __ERC1155Sipher_init_unchained(string memory _name, string memory _symbol, string memory baseURI, string memory contractURI, address transferProxy, address lazyTransferProxy) internal {
         __Ownable_init_unchained();
         __ERC1155Lazy_init_unchained();
         __ERC165_init_unchained();

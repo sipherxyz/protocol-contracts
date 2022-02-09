@@ -3,10 +3,10 @@
 pragma solidity 0.7.6;
 pragma abicoder v2;
 
-import "@rarible/tokens-minimal/contracts/erc-721/ERC721UpgradeableMinimal.sol";
-import "@rarible/royalties/contracts/impl/RoyaltiesV2Impl.sol";
-import "@rarible/royalties-upgradeable/contracts/RoyaltiesV2Upgradeable.sol";
-import "@rarible/lazy-mint/contracts/erc-721/IERC721LazyMint.sol";
+import "@sipher/tokens-minimal/contracts/erc-721/ERC721UpgradeableMinimal.sol";
+import "@sipher/royalties/contracts/impl/RoyaltiesV2Impl.sol";
+import "@sipher/royalties-upgradeable/contracts/RoyaltiesV2Upgradeable.sol";
+import "@sipher/lazy-mint/contracts/erc-721/IERC721LazyMint.sol";
 import "../Mint721Validator.sol";
 import "@openzeppelin/contracts-upgradeable/math/SafeMathUpgradeable.sol";
 import "./ERC721URI.sol";

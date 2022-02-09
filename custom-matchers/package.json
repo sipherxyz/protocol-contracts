@@ -1,5 +1,5 @@
 {
-  "name": "@rarible/custom-matchers",
+  "name": "@sipher/custom-matchers",
   "version": "0.3.0",
   "description": "Custom matchers for different asset classes",
   "files": [

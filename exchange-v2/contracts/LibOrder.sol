@@ -3,9 +3,8 @@
 pragma solidity 0.7.6;
 
 import "./lib/LibMath.sol";
-import "@rarible/lib-asset/contracts/LibAsset.sol";
+import "@sipher/lib-asset/contracts/LibAsset.sol";
 import "./LibOrderDataV2.sol";
-import "./LibOrderDataV1.sol";
 
 library LibOrder {
     using SafeMathUpgradeable for uint;
@@ -37,24 +36,13 @@ library LibOrder {
     }
 
     function hashKey(Order memory order) internal pure returns (bytes32) {
-        //order.data is in hash for V2 orders
-        if (order.dataType == LibOrderDataV2.V2){
-            return keccak256(abi.encode(
-                order.maker,
-                LibAsset.hash(order.makeAsset.assetType),
-                LibAsset.hash(order.takeAsset.assetType),
-                order.salt,
-                order.data
-            ));
-        } else {
-            return keccak256(abi.encode(
-                order.maker,
-                LibAsset.hash(order.makeAsset.assetType),
-                LibAsset.hash(order.takeAsset.assetType),
-                order.salt
-            ));
-        }
-        
+        return keccak256(abi.encode(
+            order.maker,
+            LibAsset.hash(order.makeAsset.assetType),
+            LibAsset.hash(order.takeAsset.assetType),
+            order.salt,
+            order.data
+        ));
     }
 
     function hash(Order memory order) internal pure returns (bytes32) {

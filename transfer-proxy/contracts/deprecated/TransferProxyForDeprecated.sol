@@ -4,7 +4,7 @@ pragma solidity >=0.6.9 <0.8.0;
 pragma abicoder v2;
 
 import "../roles/OperatorRole.sol";
-import "@rarible/exchange-interfaces/contracts/ITransferProxy.sol";
+import "@sipher/exchange-interfaces/contracts/ITransferProxy.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol";
 
 contract TransferProxyForDeprecated is Initializable, OperatorRole, ITransferProxy {

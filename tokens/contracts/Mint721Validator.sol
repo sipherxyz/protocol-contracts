@@ -3,7 +3,7 @@
 pragma solidity 0.7.6;
 
 import "./erc-1271/ERC1271Validator.sol";
-import "@rarible/lazy-mint/contracts/erc-721/LibERC721LazyMint.sol";
+import "@sipher/lazy-mint/contracts/erc-721/LibERC721LazyMint.sol";
 
 contract Mint721Validator is ERC1271Validator {
     function __Mint721Validator_init_unchained() internal initializer {

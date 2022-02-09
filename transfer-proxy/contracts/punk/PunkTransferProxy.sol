@@ -3,8 +3,8 @@
 pragma solidity >=0.6.9 <0.8.0;
 pragma abicoder v2;
 
-import "@rarible/exchange-interfaces/contracts/ITransferProxy.sol";
-import "@rarible/exchange-interfaces/contracts/ICryptoPunksMarket.sol";
+import "@sipher/exchange-interfaces/contracts/ITransferProxy.sol";
+import "@sipher/exchange-interfaces/contracts/ICryptoPunksMarket.sol";
 import "../roles/OperatorRole.sol";
 
 contract PunkTransferProxy is OperatorRole, ITransferProxy {
