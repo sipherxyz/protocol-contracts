@@ -31,11 +31,8 @@ const config: HardhatUserConfig = {
       allowUnlimitedContractSize: false,
     },
     rinkeby: {
-      url: `https://rinkeby.infura.io/v3/${process.env.INFURA_KEY}`,
-      accounts: [
-        process.env.DEFAULT_PRIVATE_KEY as string,
-        process.env.TEST_PRIVATE_KEY as string,
-      ],
+      url: `${process.env.INFURA_KEY}`,
+      accounts: [process.env.DEFAULT_PRIVATE_KEY as string, process.env.TEST_PRIVATE_KEY as string],
       chainId: 4,
     },
   },
@@ -44,6 +41,9 @@ const config: HardhatUserConfig = {
     deployer: {
       default: 0,
     },
+  },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_API_KEY,
   },
   paths: {
     deploy: "deploy",

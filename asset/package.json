@@ -1,7 +1,7 @@
 {
   "name": "@sipher/lib-asset",
   "version": "0.1.2",
-  "description": "Solidity libraries used by ExchangeV2 on Rarible",
+  "description": "Solidity libraries used by ExchangeV2 on Sipher",
   "files": [
     "contracts",
     "readme.md"
@@ -9,7 +9,7 @@
   "access": "public",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rariblecom/protocol-contracts.git"
+    "url": "git+https://github.com/sipherxyz/protocol-contracts.git"
   },
   "keywords": [
     "ethereum",
@@ -19,7 +19,7 @@
   "author": "0v1se",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rariblecom/protocol-contracts/issues"
+    "url": "https://github.com/sipherxyz/protocol-contracts/issues"
   },
   "publishConfig": {
     "access": "public"

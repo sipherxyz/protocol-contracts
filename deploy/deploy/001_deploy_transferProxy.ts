@@ -13,11 +13,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     autoMine: true, // speed up deployment on local network (ganache, hardhat), no effect on live networks,
   });
 
-  const contract = await hre.ethers.getContractAt(
-    deployResult.abi,
-    deployResult.address,
-    deployer
-  );
+  const contract = await hre.ethers.getContractAt(deployResult.abi, deployResult.address, deployer);
   try {
     await (await contract.__OperatorRole_init()).wait();
   } catch (err) {

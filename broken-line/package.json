@@ -1,7 +1,7 @@
 {
   "name": "@sipher/lib-broken-line",
   "version": "0.3.2",
-  "description": "Solidity struct Asset used by ExchangeV2 on Rarible",
+  "description": "Solidity struct Asset used by ExchangeV2 on Sipher",
   "files": [
     "contracts",
     "readme.md"
@@ -9,7 +9,7 @@
   "access": "public",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rariblecom/protocol-contracts.git"
+    "url": "git+https://github.com/sipherxyz/protocol-contracts.git"
   },
   "keywords": [
     "ethereum",
