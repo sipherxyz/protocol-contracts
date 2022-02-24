@@ -1,5 +1,5 @@
 const { deployProxy, upgradeProxy } = require('@openzeppelin/truffle-upgrades');
-const RaribleTransferManagerTest = artifacts.require("RaribleTransferManagerTest.sol");
+const SipherTransferManagerTest = artifacts.require("SipherTransferManagerTest.sol");
 const TestERC20 = artifacts.require("TestERC20.sol");
 const TestERC721 = artifacts.require("TestERC721.sol");
 const TestERC1155 = artifacts.require("TestERC1155.sol");
@@ -27,7 +27,7 @@ const eth = "0x0000000000000000000000000000000000000000";
 const { expectThrow, verifyBalanceChange } = require("@daonomic/tests-common");
 const { ETH, ERC20, ERC721, ERC1155, ORDER_DATA_V1, enc, encDataV2, id } = require("../assets");
 
-contract("RaribleTransferManagerTest:doTransferTest()", accounts => {
+contract("SipherTransferManagerTest:doTransferTest()", accounts => {
 	let testing;
 	let transferProxy;
 	let erc20TransferProxy;
@@ -57,34 +57,34 @@ contract("RaribleTransferManagerTest:doTransferTest()", accounts => {
 	beforeEach(async () => {
 		transferProxy = await TransferProxyTest.new();
 		erc20TransferProxy = await ERC20TransferProxyTest.new();
-		testing = await RaribleTransferManagerTest.new();
+		testing = await SipherTransferManagerTest.new();
 		royaltiesRegistry = await TestRoyaltiesRegistry.new();
 		await testing.__TransferManager_init(transferProxy.address, erc20TransferProxy.address, 300, community, royaltiesRegistry.address);
 		t1 = await TestERC20.new();
 		t2 = await TestERC20.new();
 		/*ERC721 */
-		erc721 = await TestERC721.new("Rarible", "RARI", "https://ipfs.rarible.com");
+		erc721 = await TestERC721.new("Sipher", "RARI", "https://ipfs.Sipher.com");
 		/*ERC1155*/
-		erc1155 = await TestERC1155.new("https://ipfs.rarible.com");
+		erc1155 = await TestERC1155.new("https://ipfs.Sipher.com");
 		await testing.setFeeReceiver(t1.address, protocol);//
     /*ETH*/
     await testing.setFeeReceiver(eth, protocol);//
     /*NFT 721 RoyalitiesV1*/
-    erc721V1 = await ERC721_V1.new("Rarible", "RARI", "https://ipfs.rarible.com");
+    erc721V1 = await ERC721_V1.new("Sipher", "RARI", "https://ipfs.Sipher.com");
     await erc721V1.initialize();
     /*NFT 721 RoyalitiesV2*/
-    erc721V2 = await ERC721_V2.new("Rarible", "RARI", "https://ipfs.rarible.com");
+    erc721V2 = await ERC721_V2.new("Sipher", "RARI", "https://ipfs.Sipher.com");
     await erc721V2.initialize();
     /*1155 RoyalitiesV1*/
-    erc1155V1 = await ERC1155_V1.new("https://ipfs.rarible.com");
+    erc1155V1 = await ERC1155_V1.new("https://ipfs.Sipher.com");
     await erc1155V1.initialize();
     /*1155 RoyalitiesV2*/
-    erc1155V2 = await ERC1155_V2.new("https://ipfs.rarible.com");
+    erc1155V2 = await ERC1155_V2.new("https://ipfs.Sipher.com");
     await erc1155V2.initialize();
 		/*NFT 721 RoyalitiesV1 with interface error*/
-		erc721V1_Error = await ERC721_V1_Error.new("Rarible", "RARI", "https://ipfs.rarible.com");
+		erc721V1_Error = await ERC721_V1_Error.new("Sipher", "RARI", "https://ipfs.Sipher.com");
 		/*NFT 1155 RoyalitiesV2 with interface error*/
-		erc1155V2_Error = await ERC1155_V2_Error.new("https://ipfs.rarible.com");
+		erc1155V2_Error = await ERC1155_V2_Error.new("https://ipfs.Sipher.com");
 	});
 
 	describe("Check doTransfers()", () => {
@@ -566,7 +566,7 @@ contract("RaribleTransferManagerTest:doTransferTest()", accounts => {
 
 		it("Transfer from ERC20 to ERC721(Royalties-2981 - 10%), protocol fee 6% (buyerFee3%, sallerFee3%)", async () => {
       /*NFT with royalty, support 2981*/
-      erc721V2981 = await ERC721V2981.new("Rarible", "RARI", "https://ipfs.rarible.com");
+      erc721V2981 = await ERC721V2981.new("Sipher", "RARI", "https://ipfs.Sipher.com");
       await erc721V2981.initialize();
     
       const royaltiesGetter = accounts[2];

@@ -1,3 +1,4 @@
+const truffleAssert = require("truffle-assertions");
 const ERC721LazyMintTest = artifacts.require("ERC721LazyMintTest.sol");
 const ERC1155LazyMintTest = artifacts.require("ERC1155LazyMintTest.sol");
 const ERC721LazyMintTransferProxy = artifacts.require("ERC721LazyMintTransferProxy.sol")
@@ -35,7 +36,7 @@ contract("Exchange with LazyMint proxies", accounts => {
 
 		const encodedMintData = await erc721Test.encode([1, "uri", [[accounts[1], 0], [accounts[3], 0]], [], []]);
 		//transfer by ERC721LazyMintTransferProxy.transfer
-		await expectThrow(
+		await truffleAssert.reverts(
 			proxy.transfer(Asset(id("ERC721_LAZY"), encodedMintData, 1), accounts[1], accounts[2], { from: accounts[4] })
 		);
 	})
@@ -59,7 +60,7 @@ contract("Exchange with LazyMint proxies", accounts => {
 
 	  const encodedMintData = await erc1155Test.encode([1, "uri", 10, [[accounts[1], 0], [accounts[3], 0]], [], []]);
 		//transfer by ERC721LazyMintTransferProxy.transfer
-		await expectThrow(
+		await truffleAssert.reverts(
       proxy.transfer(Asset(id("ERC1155_LAZY"), encodedMintData, 5), accounts[1], accounts[2], { from: accounts[5] })
     );
 	})

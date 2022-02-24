@@ -1,16 +1,14 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { hashId, readContractAddress } from "../utils/util";
+import { hashId } from "../utils/util";
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
-  const { deployments, getNamedAccounts, getUnnamedAccounts, ethers } = hre;
+  const { deployments, getNamedAccounts, ethers } = hre;
   const { deploy } = deployments;
 
-  const { deployer } = await getNamedAccounts();
+  const { deployer, recipient } = await getNamedAccounts();
 
   console.log(deployer);
-
-  const [recipient] = await getUnnamedAccounts();
 
   console.log(recipient);
 

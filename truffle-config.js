@@ -1,14 +1,14 @@
 const os = require("os");
 
-let apiKey;
-try {
-  console.log(`Loading etherscan key from ${os.homedir() + "/.ethereum/etherscan.json"}`);
-  apiKey = require(os.homedir() + "/.ethereum/etherscan.json").apiKey;
-  console.log("loaded etherscan api key");
-} catch {
-  console.log("unable to load etherscan key from config");
-  apiKey = "UNKNOWN";
-}
+let apiKey = process.env.ETHERSCAN_API_KEY;
+// try {
+//   console.log(`Loading etherscan key from ${os.homedir() + "/.ethereum/etherscan.json"}`);
+//   apiKey = require(os.homedir() + "/.ethereum/etherscan.json").apiKey;
+//   console.log("loaded etherscan api key");
+// } catch {
+//   console.log("unable to load etherscan key from config");
+//   apiKey = "UNKNOWN";
+// }
 
 function createNetwork(name) {
   try {

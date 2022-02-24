@@ -41,6 +41,9 @@ const config: HardhatUserConfig = {
     deployer: {
       default: 0,
     },
+    recipient: {
+      default: 1,
+    },
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,
