@@ -4,7 +4,7 @@ pragma solidity >=0.6.9 <0.8.0;
 pragma abicoder v2;
 
 import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
-import "@rarible/lazy-mint/contracts/erc-721/IERC721LazyMint.sol";
+import "@sipher/lazy-mint/contracts/erc-721/IERC721LazyMint.sol";
 
 contract ERC721LazyMintTest is IERC721LazyMint, ERC721Upgradeable {
     function mintAndTransfer(

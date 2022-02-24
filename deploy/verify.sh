@@ -1,0 +1,1 @@
+yarn hardhat --network rinkeby etherscan-verify

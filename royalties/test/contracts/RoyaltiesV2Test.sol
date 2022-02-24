@@ -12,12 +12,12 @@ contract RoyaltiesV2Test {
         royalties = _royalties;
     }
 
-    event Test(address account, uint value);
+    event Test(address account, uint256 value);
 
-    function royaltiesTest(uint id) public {
-        LibPart.Part[] memory result = royalties.getRaribleV2Royalties(id);
+    function royaltiesTest(uint256 id) public {
+        LibPart.Part[] memory result = royalties.getSipherV2Royalties(id);
 
-        for (uint i = 0; i < result.length; i++) {
+        for (uint256 i = 0; i < result.length; i++) {
             emit Test(result[i].account, result[i].value);
         }
     }

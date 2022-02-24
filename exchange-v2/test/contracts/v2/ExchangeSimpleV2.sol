@@ -3,10 +3,10 @@
 pragma solidity 0.7.6;
 pragma abicoder v2;
 
-import "../../../contracts/ExchangeV2Core.sol";
+import "../../../contracts/ExchangeCore.sol";
 import "./SimpleTransferManager.sol";
 
-contract ExchangeSimpleV2 is ExchangeV2Core, SimpleTransferManager {
+contract ExchangeSimpleV2 is ExchangeCore, SimpleTransferManager {
     function __ExchangeSimpleV2_init(
         INftTransferProxy _transferProxy,
         IERC20TransferProxy _erc20TransferProxy

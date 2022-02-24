@@ -3,21 +3,27 @@
 pragma solidity >=0.6.2 <0.8.0;
 pragma abicoder v2;
 
-import "@rarible/royalties/contracts/IRoyaltiesProvider.sol";
-import "@rarible/royalties/contracts/LibRoyaltiesV2.sol";
-import "@rarible/royalties/contracts/LibRoyaltiesV1.sol";
-import "@rarible/royalties/contracts/LibRoyalties2981.sol";
-import "@rarible/royalties/contracts/RoyaltiesV1.sol";
-import "@rarible/royalties/contracts/RoyaltiesV2.sol";
-import "@rarible/royalties/contracts/IERC2981.sol";
+import "@sipher/royalties/contracts/IRoyaltiesProvider.sol";
+import "@sipher/royalties/contracts/LibRoyaltiesV2.sol";
+import "@sipher/royalties/contracts/LibRoyaltiesV1.sol";
+import "@sipher/royalties/contracts/LibRoyalties2981.sol";
+import "@sipher/royalties/contracts/RoyaltiesV1.sol";
+import "@sipher/royalties/contracts/RoyaltiesV2.sol";
+import "@sipher/royalties/contracts/IERC2981.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 //old RoyaltiesRegistry with royaltiesProviders changed to  mapping(address => uint) to test upgradeability
 contract RoyaltiesRegistryOld is IRoyaltiesProvider, OwnableUpgradeable {
-
-    event RoyaltiesSetForToken(address indexed token, uint indexed tokenId, LibPart.Part[] royalties);
-    event RoyaltiesSetForContract(address indexed token, LibPart.Part[] royalties);
+    event RoyaltiesSetForToken(
+        address indexed token,
+        uint256 indexed tokenId,
+        LibPart.Part[] royalties
+    );
+    event RoyaltiesSetForContract(
+        address indexed token,
+        LibPart.Part[] royalties
+    );
 
     struct RoyaltiesSet {
         bool initialized;
@@ -26,7 +32,7 @@ contract RoyaltiesRegistryOld is IRoyaltiesProvider, OwnableUpgradeable {
 
     mapping(bytes32 => RoyaltiesSet) public royaltiesByTokenAndTokenId;
     mapping(address => RoyaltiesSet) public royaltiesByToken;
-    mapping(address => uint) public royaltiesProviders;
+    mapping(address => uint256) public royaltiesProviders;
 
     function __RoyaltiesRegistry_init() external initializer {
         __Ownable_init_unchained();
@@ -34,41 +40,65 @@ contract RoyaltiesRegistryOld is IRoyaltiesProvider, OwnableUpgradeable {
 
     function setProviderByToken(address token, address provider) external {
         checkOwner(token);
-        royaltiesProviders[token] = uint(provider);
+        royaltiesProviders[token] = uint256(provider);
     }
 
-    function getProvider(address token) public view returns(address) {
+    function getProvider(address token) public view returns (address) {
         return address(royaltiesProviders[token]);
     }
 
-    function setRoyaltiesByToken(address token, LibPart.Part[] memory royalties) external {
+    function setRoyaltiesByToken(address token, LibPart.Part[] memory royalties)
+        external
+    {
         checkOwner(token);
-        uint sumRoyalties = 0;
+        uint256 sumRoyalties = 0;
         delete royaltiesByToken[token];
-        for (uint i = 0; i < royalties.length; i++) {
-            require(royalties[i].account != address(0x0), "RoyaltiesByToken recipient should be present");
-            require(royalties[i].value != 0, "Royalty value for RoyaltiesByToken should be > 0");
+        for (uint256 i = 0; i < royalties.length; i++) {
+            require(
+                royalties[i].account != address(0x0),
+                "RoyaltiesByToken recipient should be present"
+            );
+            require(
+                royalties[i].value != 0,
+                "Royalty value for RoyaltiesByToken should be > 0"
+            );
             royaltiesByToken[token].royalties.push(royalties[i]);
             sumRoyalties += royalties[i].value;
         }
-        require(sumRoyalties < 10000, "Set by token royalties sum more, than 100%");
+        require(
+            sumRoyalties < 10000,
+            "Set by token royalties sum more, than 100%"
+        );
         royaltiesByToken[token].initialized = true;
         emit RoyaltiesSetForContract(token, royalties);
     }
 
-    function setRoyaltiesByTokenAndTokenId(address token, uint tokenId, LibPart.Part[] memory royalties) external {
+    function setRoyaltiesByTokenAndTokenId(
+        address token,
+        uint256 tokenId,
+        LibPart.Part[] memory royalties
+    ) external {
         checkOwner(token);
         setRoyaltiesCacheByTokenAndTokenId(token, tokenId, royalties);
     }
 
     function checkOwner(address token) internal view {
-        if ((owner() != _msgSender()) && (OwnableUpgradeable(token).owner() != _msgSender())) {
+        if (
+            (owner() != _msgSender()) &&
+            (OwnableUpgradeable(token).owner() != _msgSender())
+        ) {
             revert("Token owner not detected");
         }
     }
 
-    function getRoyalties(address token, uint tokenId) override external returns (LibPart.Part[] memory) {
-        RoyaltiesSet memory royaltiesSet = royaltiesByTokenAndTokenId[keccak256(abi.encode(token, tokenId))];
+    function getRoyalties(address token, uint256 tokenId)
+        external
+        override
+        returns (LibPart.Part[] memory)
+    {
+        RoyaltiesSet memory royaltiesSet = royaltiesByTokenAndTokenId[
+            keccak256(abi.encode(token, tokenId))
+        ];
         if (royaltiesSet.initialized) {
             return royaltiesSet.royalties;
         }
@@ -76,7 +106,10 @@ contract RoyaltiesRegistryOld is IRoyaltiesProvider, OwnableUpgradeable {
         if (royaltiesSet.initialized) {
             return royaltiesSet.royalties;
         }
-        (bool result, LibPart.Part[] memory resultRoyalties) = providerExtractor(token, tokenId);
+        (
+            bool result,
+            LibPart.Part[] memory resultRoyalties
+        ) = providerExtractor(token, tokenId);
         if (result == false) {
             resultRoyalties = royaltiesFromContract(token, tokenId);
         }
@@ -84,33 +117,63 @@ contract RoyaltiesRegistryOld is IRoyaltiesProvider, OwnableUpgradeable {
         return resultRoyalties;
     }
 
-    function setRoyaltiesCacheByTokenAndTokenId(address token, uint tokenId, LibPart.Part[] memory royalties) internal {
-        uint sumRoyalties = 0;
+    function setRoyaltiesCacheByTokenAndTokenId(
+        address token,
+        uint256 tokenId,
+        LibPart.Part[] memory royalties
+    ) internal {
+        uint256 sumRoyalties = 0;
         bytes32 key = keccak256(abi.encode(token, tokenId));
         delete royaltiesByTokenAndTokenId[key].royalties;
-        for (uint i = 0; i < royalties.length; i++) {
-            require(royalties[i].account != address(0x0), "RoyaltiesByTokenAndTokenId recipient should be present");
-            require(royalties[i].value != 0, "Royalty value for RoyaltiesByTokenAndTokenId should be > 0");
+        for (uint256 i = 0; i < royalties.length; i++) {
+            require(
+                royalties[i].account != address(0x0),
+                "RoyaltiesByTokenAndTokenId recipient should be present"
+            );
+            require(
+                royalties[i].value != 0,
+                "Royalty value for RoyaltiesByTokenAndTokenId should be > 0"
+            );
             royaltiesByTokenAndTokenId[key].royalties.push(royalties[i]);
             sumRoyalties += royalties[i].value;
         }
-        require(sumRoyalties < 10000, "Set by token and tokenId royalties sum more, than 100%");
+        require(
+            sumRoyalties < 10000,
+            "Set by token and tokenId royalties sum more, than 100%"
+        );
         royaltiesByTokenAndTokenId[key].initialized = true;
         emit RoyaltiesSetForToken(token, tokenId, royalties);
     }
 
-    function royaltiesFromContract(address token, uint tokenId) internal view returns (LibPart.Part[] memory) {
-        (LibPart.Part[] memory royalties, bool isNative) = royaltiesFromContractNative(token, tokenId);
+    function royaltiesFromContract(address token, uint256 tokenId)
+        internal
+        view
+        returns (LibPart.Part[] memory)
+    {
+        (
+            LibPart.Part[] memory royalties,
+            bool isNative
+        ) = royaltiesFromContractNative(token, tokenId);
         if (isNative) {
             return royalties;
         }
         return royaltiesFromContractSpecial(token, tokenId);
     }
 
-    function royaltiesFromContractNative(address token, uint tokenId) internal view returns (LibPart.Part[] memory, bool) {
-        if (IERC165Upgradeable(token).supportsInterface(LibRoyaltiesV2._INTERFACE_ID_ROYALTIES)) {
+    function royaltiesFromContractNative(address token, uint256 tokenId)
+        internal
+        view
+        returns (LibPart.Part[] memory, bool)
+    {
+        if (
+            IERC165Upgradeable(token).supportsInterface(
+                LibRoyaltiesV2._INTERFACE_ID_ROYALTIES
+            )
+        ) {
             RoyaltiesV2 v2 = RoyaltiesV2(token);
-            try v2.getRaribleV2Royalties(tokenId) returns (LibPart.Part[] memory result) {
+            try v2.getSipherV2Royalties(tokenId) returns (
+                LibPart.Part[] memory result
+            ) {
                 return (result, true);
             } catch {
                 return (new LibPart.Part[](0), false);
@@ -118,13 +181,15 @@ contract RoyaltiesRegistryOld is IRoyaltiesProvider, OwnableUpgradeable {
         }
         RoyaltiesV1 v1 = RoyaltiesV1(token);
         address payable[] memory recipients;
-        try v1.getFeeRecipients(tokenId) returns (address payable[] memory result) {
+        try v1.getFeeRecipients(tokenId) returns (
+            address payable[] memory result
+        ) {
             recipients = result;
         } catch {
             return (new LibPart.Part[](0), false);
         }
-        uint[] memory values;
-        try v1.getFeeBps(tokenId) returns (uint[] memory result) {
+        uint256[] memory values;
+        try v1.getFeeBps(tokenId) returns (uint256[] memory result) {
             values = result;
         } catch {
             return (new LibPart.Part[](0), false);
@@ -140,11 +205,25 @@ contract RoyaltiesRegistryOld is IRoyaltiesProvider, OwnableUpgradeable {
         return (result, true);
     }
 
-    function royaltiesFromContractSpecial(address token, uint tokenId) internal view returns (LibPart.Part[] memory) {
-        if (IERC165Upgradeable(token).supportsInterface(LibRoyalties2981._INTERFACE_ID_ROYALTIES)) {
+    function royaltiesFromContractSpecial(address token, uint256 tokenId)
+        internal
+        view
+        returns (LibPart.Part[] memory)
+    {
+        if (
+            IERC165Upgradeable(token).supportsInterface(
+                LibRoyalties2981._INTERFACE_ID_ROYALTIES
+            )
+        ) {
             IERC2981 v2981 = IERC2981(token);
-            try v2981.royaltyInfo(tokenId, LibRoyalties2981._WEIGHT_VALUE) returns (address receiver, uint256 royaltyAmount) {
-                return LibRoyalties2981.calculateRoyalties(receiver, royaltyAmount);
+            try
+                v2981.royaltyInfo(tokenId, LibRoyalties2981._WEIGHT_VALUE)
+            returns (address receiver, uint256 royaltyAmount) {
+                return
+                    LibRoyalties2981.calculateRoyalties(
+                        receiver,
+                        royaltyAmount
+                    );
             } catch {
                 return new LibPart.Part[](0);
             }
@@ -152,12 +231,17 @@ contract RoyaltiesRegistryOld is IRoyaltiesProvider, OwnableUpgradeable {
         return new LibPart.Part[](0);
     }
 
-    function providerExtractor(address token, uint tokenId) internal returns (bool result, LibPart.Part[] memory royalties) {
+    function providerExtractor(address token, uint256 tokenId)
+        internal
+        returns (bool result, LibPart.Part[] memory royalties)
+    {
         result = false;
         address providerAddress = getProvider(token);
         if (providerAddress != address(0x0)) {
             IRoyaltiesProvider provider = IRoyaltiesProvider(providerAddress);
-            try provider.getRoyalties(token, tokenId) returns (LibPart.Part[] memory royaltiesByProvider) {
+            try provider.getRoyalties(token, tokenId) returns (
+                LibPart.Part[] memory royaltiesByProvider
+            ) {
                 royalties = royaltiesByProvider;
                 result = true;
             } catch {}

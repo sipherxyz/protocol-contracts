@@ -3,11 +3,15 @@
 pragma solidity 0.7.6;
 pragma abicoder v2;
 
-import "../../../contracts/ExchangeV2Core.sol";
+import "../../../contracts/ExchangeCore.sol";
 import "./SimpleTransferManager.sol";
-import "@rarible/meta-tx/contracts/EIP712MetaTransaction.sol";
+import "@sipher/meta-tx/contracts/EIP712MetaTransaction.sol";
 
-contract ExchangeSimpleV2_MetaTx is ExchangeV2Core, SimpleTransferManager, EIP712MetaTransaction {
+contract ExchangeSimple_MetaTx is
+    ExchangeCore,
+    SimpleTransferManager,
+    EIP712MetaTransaction
+{
     function __ExchangeSimpleV2_init(
         INftTransferProxy _transferProxy,
         IERC20TransferProxy _erc20TransferProxy
@@ -19,7 +23,13 @@ contract ExchangeSimpleV2_MetaTx is ExchangeV2Core, SimpleTransferManager, EIP71
         __MetaTransaction_init_unchained("ExchangeV2", "1");
     }
 
-    function _msgSender() internal view virtual override(ContextUpgradeable, EIP712MetaTransaction) returns (address payable) {
+    function _msgSender()
+        internal
+        view
+        virtual
+        override(ContextUpgradeable, EIP712MetaTransaction)
+        returns (address payable)
+    {
         return super._msgSender();
     }
 }

@@ -4,8 +4,8 @@ pragma solidity >=0.6.9 <0.8.0;
 pragma abicoder v2;
 
 import "@openzeppelin/contracts-upgradeable/token/ERC1155/ERC1155Upgradeable.sol";
-import "@rarible/lazy-mint/contracts/erc-1155/IERC1155LazyMint.sol";
-import "@rarible/lazy-mint/contracts/erc-1155/LibERC1155LazyMint.sol";
+import "@sipher/lazy-mint/contracts/erc-1155/IERC1155LazyMint.sol";
+import "@sipher/lazy-mint/contracts/erc-1155/LibERC1155LazyMint.sol";
 
 contract ERC1155LazyMintTest is IERC1155LazyMint, ERC1155Upgradeable {
     function mintAndTransfer(

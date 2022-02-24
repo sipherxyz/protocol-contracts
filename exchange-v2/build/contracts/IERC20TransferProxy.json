@@ -30,7 +30,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract IERC20Upgradeable\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"erc20safeTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@rarible/exchange-interfaces/contracts/IERC20TransferProxy.sol\":\"IERC20TransferProxy\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol\":{\"keccak256\":\"0xa1931c47a617014f858580db625aa0dcf343796f39acd4b5b51effc092a1f0a9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2cbeb499bad52667b96dd7df8e9b1f583e8c07afaba0018a75e5b7ff6e777173\",\"dweb:/ipfs/QmPLJnuhEcWnpmhMHKsiuVHVxMwb5k6idYyjajbrtZLz5B\"]},\"@rarible/exchange-interfaces/contracts/IERC20TransferProxy.sol\":{\"keccak256\":\"0x5cc1d6300618f13724624bbdd1b4447d1f149dc7cc3b75497e03110f798d9547\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://330001e598d2648c07a4e4c0276ed4822a24533dd6f5ad288738d8bee3c86404\",\"dweb:/ipfs/QmddZvc39hJ9nm2jvnxbjjj8v95XWnn8G4CEzuFxzWCHH6\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract IERC20Upgradeable\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"erc20safeTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@sipher/exchange-interfaces/contracts/IERC20TransferProxy.sol\":\"IERC20TransferProxy\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol\":{\"keccak256\":\"0xa1931c47a617014f858580db625aa0dcf343796f39acd4b5b51effc092a1f0a9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2cbeb499bad52667b96dd7df8e9b1f583e8c07afaba0018a75e5b7ff6e777173\",\"dweb:/ipfs/QmPLJnuhEcWnpmhMHKsiuVHVxMwb5k6idYyjajbrtZLz5B\"]},\"@sipher/exchange-interfaces/contracts/IERC20TransferProxy.sol\":{\"keccak256\":\"0x5cc1d6300618f13724624bbdd1b4447d1f149dc7cc3b75497e03110f798d9547\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://330001e598d2648c07a4e4c0276ed4822a24533dd6f5ad288738d8bee3c86404\",\"dweb:/ipfs/QmddZvc39hJ9nm2jvnxbjjj8v95XWnn8G4CEzuFxzWCHH6\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -39,9 +39,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.9 <0.8.0;\npragma abicoder v2;\n\nimport \"@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol\";\n\ninterface IERC20TransferProxy {\n    function erc20safeTransferFrom(IERC20Upgradeable token, address from, address to, uint256 value) external;\n}\n",
-  "sourcePath": "@rarible/exchange-interfaces/contracts/IERC20TransferProxy.sol",
+  "sourcePath": "@sipher/exchange-interfaces/contracts/IERC20TransferProxy.sol",
   "ast": {
-    "absolutePath": "@rarible/exchange-interfaces/contracts/IERC20TransferProxy.sol",
+    "absolutePath": "@sipher/exchange-interfaces/contracts/IERC20TransferProxy.sol",
     "exportedSymbols": {
       "IERC20TransferProxy": [
         1786
@@ -244,7 +244,7 @@
   },
   "legacyAST": {
     "attributes": {
-      "absolutePath": "@rarible/exchange-interfaces/contracts/IERC20TransferProxy.sol",
+      "absolutePath": "@sipher/exchange-interfaces/contracts/IERC20TransferProxy.sol",
       "exportedSymbols": {
         "IERC20TransferProxy": [
           1786
@@ -477,8 +477,8 @@
     "version": "0.7.6+commit.7338295f.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.3",
-  "updatedAt": "2021-11-08T12:47:29.789Z",
+  "schemaVersion": "3.4.5",
+  "updatedAt": "2022-02-24T02:20:00.279Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

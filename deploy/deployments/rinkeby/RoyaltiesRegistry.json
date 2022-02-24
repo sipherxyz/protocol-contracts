@@ -1,5 +1,5 @@
 {
-  "address": "0xe61D153A8eaf1Bd0914553F06127b7f48A0D0376",
+  "address": "0x9675B4c548012EF1982fc77c344Ef395563A43B3",
   "abi": [
     {
       "anonymous": false,
@@ -470,40 +470,40 @@
       "type": "constructor"
     }
   ],
-  "transactionHash": "0x7a80561806e246bc979d2475e9c7f5eb135d1bfee208aa62b1229cd7ccf02d5c",
+  "transactionHash": "0xc8d6f7db78170bdf9d12bade7e1343cf7b4d7f12de0c265ff11279d95e50c2f4",
   "receipt": {
     "to": null,
     "from": "0xD4f849989B403326F7d000bb30E6dd0016bae9b3",
-    "contractAddress": "0xe61D153A8eaf1Bd0914553F06127b7f48A0D0376",
-    "transactionIndex": 24,
-    "gasUsed": "592251",
-    "logsBloom": "0x00000000000000000000000000000000000000200000000000800000000000000000000000000000000040000200000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000020000000000000000000800000000000000000000000000000000400000000000000000000000000000000800000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000002000000000000000000000",
-    "blockHash": "0x9d9f2397b4c3ca10c8da1310d250e753db74d5a9821ee1b165dd7c36d767d242",
-    "transactionHash": "0x7a80561806e246bc979d2475e9c7f5eb135d1bfee208aa62b1229cd7ccf02d5c",
+    "contractAddress": "0x9675B4c548012EF1982fc77c344Ef395563A43B3",
+    "transactionIndex": 10,
+    "gasUsed": "592263",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000800000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000020000000000000000000800000000000000080000000000000000400000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000002000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000002000000000000000000000",
+    "blockHash": "0xf20926acb60712f431c6fde29d84ed42dbd3cbabb23b35b4af9ea8932c8ccb65",
+    "transactionHash": "0xc8d6f7db78170bdf9d12bade7e1343cf7b4d7f12de0c265ff11279d95e50c2f4",
     "logs": [
       {
-        "transactionIndex": 24,
-        "blockNumber": 10217337,
-        "transactionHash": "0x7a80561806e246bc979d2475e9c7f5eb135d1bfee208aa62b1229cd7ccf02d5c",
-        "address": "0xe61D153A8eaf1Bd0914553F06127b7f48A0D0376",
+        "transactionIndex": 10,
+        "blockNumber": 10221772,
+        "transactionHash": "0xc8d6f7db78170bdf9d12bade7e1343cf7b4d7f12de0c265ff11279d95e50c2f4",
+        "address": "0x9675B4c548012EF1982fc77c344Ef395563A43B3",
         "topics": [
           "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
           "0x0000000000000000000000000000000000000000000000000000000000000000",
           "0x000000000000000000000000d4f849989b403326f7d000bb30e6dd0016bae9b3"
         ],
         "data": "0x",
-        "logIndex": 155,
-        "blockHash": "0x9d9f2397b4c3ca10c8da1310d250e753db74d5a9821ee1b165dd7c36d767d242"
+        "logIndex": 7,
+        "blockHash": "0xf20926acb60712f431c6fde29d84ed42dbd3cbabb23b35b4af9ea8932c8ccb65"
       }
     ],
-    "blockNumber": 10217337,
-    "cumulativeGasUsed": "11243319",
+    "blockNumber": 10221772,
+    "cumulativeGasUsed": "1336371",
     "status": 1,
     "byzantium": true
   },
   "args": [
-    "0x79F9DacC3e8A43e6330400E8F978aabB6E985Aa6",
-    "0x7eccf6B60408f1cE49d49D1347b2BC5012271417",
+    "0x1BE6243bc3D7CC80A472C332eB1411Fe0F31E071",
+    "0xD009Bf3F22f3E281135A3061F1891EfD5cbdE67F",
     "0x27fff8ab"
   ],
   "numDeployments": 1,
@@ -515,7 +515,7 @@
     "methodName": "__RoyaltiesRegistry_init",
     "args": []
   },
-  "implementation": "0x79F9DacC3e8A43e6330400E8F978aabB6E985Aa6",
+  "implementation": "0x1BE6243bc3D7CC80A472C332eB1411Fe0F31E071",
   "devdoc": {
     "details": "This contract implements a proxy that is upgradeable by an admin.  To avoid https://medium.com/nomic-labs-blog/malicious-backdoors-in-ethereum-proxies-62629adf3357[proxy selector clashing], which can potentially be used in an attack, this contract uses the https://blog.openzeppelin.com/the-transparent-proxy-pattern/[transparent proxy pattern]. This pattern implies two things that go hand in hand:  1. If any account other than the admin calls the proxy, the call will be forwarded to the implementation, even if that call matches one of the admin functions exposed by the proxy itself. 2. If the admin calls the proxy, it can access the admin functions, but its calls will never be forwarded to the implementation. If the admin tries to call a function on the implementation it will fail with an error that says \"admin cannot fallback to proxy target\".  These properties mean that the admin account can only be used for admin actions like upgrading the proxy or changing the admin, so it's best if it's a dedicated account that is not used for anything else. This will avoid headaches due to sudden errors when trying to call a function from the proxy implementation.  Our recommendation is for the dedicated account to be an instance of the {ProxyAdmin} contract. If set up this way, you should think of the `ProxyAdmin` instance as the real administrative inerface of your proxy.",
     "events": {

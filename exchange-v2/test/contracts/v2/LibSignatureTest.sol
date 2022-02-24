@@ -3,18 +3,27 @@
 pragma solidity ^0.7.0;
 pragma abicoder v2;
 
-import "@rarible/libraries/contracts/LibSignature.sol";
+import "@sipher/libraries/contracts/LibSignature.sol";
 import "../../../contracts/LibOrder.sol";
 import "@openzeppelin/contracts-upgradeable/drafts/EIP712Upgradeable.sol";
 
 contract LibSignatureTest is EIP712Upgradeable {
     using LibSignature for bytes32;
 
-    function recoverFromSigTest(bytes32 hash, bytes memory signature) external pure returns (address) {
+    function recoverFromSigTest(bytes32 hash, bytes memory signature)
+        external
+        pure
+        returns (address)
+    {
         return hash.recover(signature);
     }
 
-    function recoverFromParamsTest(bytes32 hash, uint8 v, bytes32 r, bytes32 s) external pure returns (address) {
+    function recoverFromParamsTest(
+        bytes32 hash,
+        uint8 v,
+        bytes32 r,
+        bytes32 s
+    ) external pure returns (address) {
         return hash.recover(v, r, s);
     }
 
