@@ -1,15 +1,15 @@
 {
-  "name": "@rarible/deploy",
+  "name": "@sipher/deploy",
   "version": "0.0.2",
   "description": "package with all migrations to deploy other packages",
   "access": "public",
   "license": "MIT",
   "dependencies": {
     "@openzeppelin/contracts-upgradeable": "3.4.0",
-    "@rarible/exchange-v2": "^0.4.0",
-    "@rarible/royalties-registry": "^0.4.0",
-    "@rarible/tokens": "^0.7.0",
-    "@rarible/transfer-proxy": "^0.3.0"
+    "@sipher/exchange-v2": "^0.4.0",
+    "@sipher/royalties-registry": "^0.4.0",
+    "@sipher/tokens": "^0.7.0",
+    "@sipher/transfer-proxy": "^0.3.0"
   },
   "publishConfig": {
     "access": "public"

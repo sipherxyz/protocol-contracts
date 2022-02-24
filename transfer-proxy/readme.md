@@ -1,8 +1,8 @@
-## Rarible protocol Exchange smart contracts
+## Sipher protocol Exchange smart contracts
 
 ### Architecture
 
-Rarible exchange smart contracts are built using openzeppelin's upgradeable smart contracts library. So the smart contract code can be updated to support new features, fix bugs etc.
+Sipher exchange smart contracts are built using openzeppelin's upgradeable smart contracts library. So the smart contract code can be updated to support new features, fix bugs etc.
 
 Smart contracts are heavily tested, tests are provided in the test folder.
 
@@ -69,9 +69,9 @@ There are possible improvements to protocol using these custom matchers:
 Order execution is done by TransferManager. There are 2 variants:
 
 - SimpleTransferManager (it simply transfers assets from maker to taker and vice versa)
-- RaribleTransferManager (sophisticated version, it takes in account protocol commissions, royalties etc)
+- SipherTransferManager (sophisticated version, it takes in account protocol commissions, royalties etc)
 
-TODO: There are plans to extend RaribleTransferManager to support more royalty schemes and add new features like custom fees, multiple order beneficiaries.
+TODO: There are plans to extend SipherTransferManager to support more royalty schemes and add new features like custom fees, multiple order beneficiaries.
 
 This part of the algorithm can be extended with custom ITransferExecutor. In future, new executors will be added to support new asset types, for example, executor for handling bundles can be added.
 
@@ -82,7 +82,7 @@ TODO: possible improvements:
 
 #### Fees
 
-RaribleTransferManager supports these types of fees:
+SipherTransferManager supports these types of fees:
 - protocol fees (are taken from both sides of the deal)
 - origin fees (origin and origin fee is set for every order. it can be different for two orders involved)
 - royalties (authors of the work will receive part of each sale)

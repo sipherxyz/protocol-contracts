@@ -1,22 +1,22 @@
-## Rarible protocol smart contracts for NFT
+## Sipher protocol smart contracts for NFT
 
 ### Architecture
 
 These contracts are built using openzeppelin's upgradeable smart contracts. There are 2 versions of tokens:
 
-- Rarible common contracts (ERC-721 and ERC-1155)
-- Rarible user-owned contracts (ERC-721 and ERC-1155) - users deploy these contracts, only owners can mint in these
+- Sipher common contracts (ERC-721 and ERC-1155)
+- Sipher user-owned contracts (ERC-721 and ERC-1155) - users deploy these contracts, only owners can mint in these
 
 All these contracts support these features:
 
 - lazy mint: there is mintAndTransfer function, it mints and transfers NFT to the new owner
-- Rarible on-chain royalties
+- Sipher on-chain royalties
 - multiple creators
 - supports operators (who can transfer tokens on behalf of users) for the whole smart contract
 - upgradeable 
 
-User-owned contracts use beacon proxies and these contracts can be updated by rarible DAO.
-Rarible common contracts can be upgraded too.
+User-owned contracts use beacon proxies and these contracts can be updated by Sipher DAO.
+Sipher common contracts can be upgraded too.
 
 ### Minting
 
@@ -69,4 +69,4 @@ transferFromOrMint first transfers tokens already minted, then it mints token if
 
 ### Smart-contract wide operator
 
-Our smart contracts have one smart-contract wide operator (Rarible protocol Exchange contracts). This prevents users from approving transfers to our Exchange contracts. This way users save gas fees.
+Our smart contracts have one smart-contract wide operator (Sipher protocol Exchange contracts). This prevents users from approving transfers to our Exchange contracts. This way users save gas fees.

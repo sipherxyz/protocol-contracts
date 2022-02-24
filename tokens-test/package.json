@@ -1,5 +1,5 @@
 {
-  "name": "@rarible/test",
+  "name": "@sipher/test",
   "private": true,
   "main": "truffle.js",
   "directories": {

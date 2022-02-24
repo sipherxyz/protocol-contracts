@@ -166,12 +166,12 @@ contract RoyaltiesRegistry is IRoyaltiesProvider, OwnableUpgradeable {
             return royaltiesByToken[token].royalties;
         }
 
-        //case royaltiesType = 2, royalties rarible v2
+        //case royaltiesType = 2, royalties Sipher v2
         if (royaltiesType == 2) {
             return getRoyaltiesSipherV2(token,tokenId);
         }
 
-        //case royaltiesType = 3, royalties rarible v1
+        //case royaltiesType = 3, royalties Sipher v1
         if (royaltiesType == 3) {
             return getRoyaltiesSipherV1(token, tokenId);
         }
@@ -194,7 +194,7 @@ contract RoyaltiesRegistry is IRoyaltiesProvider, OwnableUpgradeable {
         revert("something wrong in getRoyalties");
     }
 
-    /// @dev tries to get royalties rarible-v2 for token and tokenId
+    /// @dev tries to get royalties Sipher-v2 for token and tokenId
     function getRoyaltiesSipherV2(address token, uint tokenId) internal view returns (LibPart.Part[] memory) {
         try RoyaltiesV2(token).getSipherV2Royalties(tokenId) returns (LibPart.Part[] memory result) {
             return result;
@@ -203,7 +203,7 @@ contract RoyaltiesRegistry is IRoyaltiesProvider, OwnableUpgradeable {
         }
     }
 
-    /// @dev tries to get royalties rarible-v1 for token and tokenId
+    /// @dev tries to get royalties Sipher-v1 for token and tokenId
     function getRoyaltiesSipherV1(address token, uint tokenId) internal view returns (LibPart.Part[] memory) {
         RoyaltiesV1 v1 = RoyaltiesV1(token);
         address payable[] memory recipients;

@@ -153,7 +153,7 @@
             "contract": "AbstractRoyalties",
             "label": "royalties",
             "type": "t_mapping(t_uint256,t_array(t_struct(Part)4565_storage)dyn_storage)",
-            "src": "../@rarible/royalties/contracts/impl/AbstractRoyalties.sol:8"
+            "src": "../@sipher/royalties/contracts/impl/AbstractRoyalties.sol:8"
           },
           {
             "contract": "ERC1155Lazy",

@@ -1,13 +1,13 @@
-const os = require('os');
+const os = require("os");
 
 let apiKey;
 try {
-	console.log(`Loading etherscan key from ${os.homedir() + "/.ethereum/etherscan.json"}`);
-	apiKey = require(os.homedir() + "/.ethereum/etherscan.json").apiKey;
-	console.log("loaded etherscan api key");
+  console.log(`Loading etherscan key from ${os.homedir() + "/.ethereum/etherscan.json"}`);
+  apiKey = require(os.homedir() + "/.ethereum/etherscan.json").apiKey;
+  console.log("loaded etherscan api key");
 } catch {
-	console.log("unable to load etherscan key from config")
-	apiKey = "UNKNOWN"
+  console.log("unable to load etherscan key from config");
+  apiKey = "UNKNOWN";
 }
 
 function createNetwork(name) {
@@ -17,22 +17,22 @@ function createNetwork(name) {
 
     return {
       provider: () => {
-        const { estimate } = require("@rarible/estimate-middleware")
-	      if (json.path != null) {
-	        const { createProvider: createTrezorProvider } = require("@rarible/trezor-provider")
-	        const provider = createTrezorProvider({ url: json.url, path: json.path, chainId: json.network_id })
-	        provider.send = provider.sendAsync
-	        return provider
-	      } else {
-	        return createProvider(json.address, json.key, json.url)
-	      }
+        const { estimate } = require("@rarible/estimate-middleware");
+        if (json.path != null) {
+          const { createProvider: createTrezorProvider } = require("@rarible/trezor-provider");
+          const provider = createTrezorProvider({ url: json.url, path: json.path, chainId: json.network_id });
+          provider.send = provider.sendAsync;
+          return provider;
+        } else {
+          return createProvider(json.address, json.key, json.url);
+        }
       },
       from: json.address,
       gas: 1000000,
       gasPrice: gasPrice + "000000000",
       network_id: json.network_id,
       skipDryRun: true,
-      networkCheckTimeout: 500000
+      networkCheckTimeout: 500000,
     };
   } catch (e) {
     return null;
@@ -46,13 +46,11 @@ function createProvider(address, key, url) {
 }
 
 module.exports = {
-	api_keys: {
-    etherscan: apiKey
+  api_keys: {
+    etherscan: apiKey,
   },
 
-	plugins: [
-    'truffle-plugin-verify'
-  ],
+  plugins: ["truffle-plugin-verify"],
 
   networks: {
     e2e: createNetwork("e2e"),
@@ -63,7 +61,7 @@ module.exports = {
     rinkeby2: createNetwork("rinkeby2"),
     polygon_mumbai: createNetwork("polygon_mumbai"),
     polygon_mainnet: createNetwork("polygon_mainnet"),
-    dev: createNetwork("dev")
+    dev: createNetwork("dev"),
   },
 
   compilers: {
@@ -71,11 +69,11 @@ module.exports = {
       version: "0.7.6",
       settings: {
         optimizer: {
-          enabled : true,
-          runs: 200
+          enabled: true,
+          runs: 200,
         },
-        evmVersion: "istanbul"
-      }
-    }
-  }
-}
+        evmVersion: "istanbul",
+      },
+    },
+  },
+};

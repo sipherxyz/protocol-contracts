@@ -64,7 +64,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"address payable\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint96\",\"name\":\"value\",\"type\":\"uint96\"}],\"indexed\":false,\"internalType\":\"struct LibPart.Part[]\",\"name\":\"royalties\",\"type\":\"tuple[]\"}],\"name\":\"RoyaltiesSet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getRaribleV2Royalties\",\"outputs\":[{\"components\":[{\"internalType\":\"address payable\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint96\",\"name\":\"value\",\"type\":\"uint96\"}],\"internalType\":\"struct LibPart.Part[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@rarible/royalties/contracts/RoyaltiesV2.sol\":\"RoyaltiesV2\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@rarible/royalties/contracts/LibPart.sol\":{\"keccak256\":\"0xd0123f7411573a6a7e1527e0d3901913d7642e504ff240d5b7c5b76a28587def\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://447b449f7f986ecfdea10cbc96ae276877102866353b4f8410fec0bdb357d5ae\",\"dweb:/ipfs/QmatbYwMc1UXCGGH1D9fvgLbLPNdgzBVafYW84B1nJJiRr\"]},\"@rarible/royalties/contracts/RoyaltiesV2.sol\":{\"keccak256\":\"0x163fec7b8e88a8ca7f6653064f9c3f2e6d429d3bf156ebce32e4c9be5a2900e8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a0c4486b6c73eb951b7feeb83bfaa64f8387b92b1eac483f0ee4aacca7fb26b8\",\"dweb:/ipfs/Qmdh9c58do457AfdnwJgnqBU6vM8EGtnq38QZueTaSmfrY\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"address payable\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint96\",\"name\":\"value\",\"type\":\"uint96\"}],\"indexed\":false,\"internalType\":\"struct LibPart.Part[]\",\"name\":\"royalties\",\"type\":\"tuple[]\"}],\"name\":\"RoyaltiesSet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getRaribleV2Royalties\",\"outputs\":[{\"components\":[{\"internalType\":\"address payable\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint96\",\"name\":\"value\",\"type\":\"uint96\"}],\"internalType\":\"struct LibPart.Part[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@sipher/royalties/contracts/RoyaltiesV2.sol\":\"RoyaltiesV2\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@sipher/royalties/contracts/LibPart.sol\":{\"keccak256\":\"0xd0123f7411573a6a7e1527e0d3901913d7642e504ff240d5b7c5b76a28587def\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://447b449f7f986ecfdea10cbc96ae276877102866353b4f8410fec0bdb357d5ae\",\"dweb:/ipfs/QmatbYwMc1UXCGGH1D9fvgLbLPNdgzBVafYW84B1nJJiRr\"]},\"@sipher/royalties/contracts/RoyaltiesV2.sol\":{\"keccak256\":\"0x163fec7b8e88a8ca7f6653064f9c3f2e6d429d3bf156ebce32e4c9be5a2900e8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a0c4486b6c73eb951b7feeb83bfaa64f8387b92b1eac483f0ee4aacca7fb26b8\",\"dweb:/ipfs/Qmdh9c58do457AfdnwJgnqBU6vM8EGtnq38QZueTaSmfrY\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -73,9 +73,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.2 <0.8.0;\npragma abicoder v2;\n\nimport \"./LibPart.sol\";\n\ninterface RoyaltiesV2 {\n    event RoyaltiesSet(uint256 tokenId, LibPart.Part[] royalties);\n\n    function getRaribleV2Royalties(uint256 id) external view returns (LibPart.Part[] memory);\n}\n",
-  "sourcePath": "@rarible/royalties/contracts/RoyaltiesV2.sol",
+  "sourcePath": "@sipher/royalties/contracts/RoyaltiesV2.sol",
   "ast": {
-    "absolutePath": "@rarible/royalties/contracts/RoyaltiesV2.sol",
+    "absolutePath": "@sipher/royalties/contracts/RoyaltiesV2.sol",
     "exportedSymbols": {
       "LibPart": [
         4585
@@ -112,7 +112,7 @@
         "src": "65:19:36"
       },
       {
-        "absolutePath": "@rarible/royalties/contracts/LibPart.sol",
+        "absolutePath": "@sipher/royalties/contracts/LibPart.sol",
         "file": "./LibPart.sol",
         "id": 4595,
         "nodeType": "ImportDirective",
@@ -312,7 +312,7 @@
   },
   "legacyAST": {
     "attributes": {
-      "absolutePath": "@rarible/royalties/contracts/RoyaltiesV2.sol",
+      "absolutePath": "@sipher/royalties/contracts/RoyaltiesV2.sol",
       "exportedSymbols": {
         "LibPart": [
           4585
@@ -354,7 +354,7 @@
       {
         "attributes": {
           "SourceUnit": 4586,
-          "absolutePath": "@rarible/royalties/contracts/LibPart.sol",
+          "absolutePath": "@sipher/royalties/contracts/LibPart.sol",
           "file": "./LibPart.sol",
           "scope": 4612,
           "symbolAliases": [

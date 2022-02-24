@@ -49,6 +49,11 @@ abstract contract ExchangeCore is Initializable, OwnableUpgradeable, AssetMatche
         matchAndTransfer(orderLeft, orderRight);
     }
 
+    function test(
+    ) public pure returns (bool) {
+        return true;
+    }
+
     function matchAndTransfer(LibOrder.Order memory orderLeft, LibOrder.Order memory orderRight) internal {
         (LibAsset.AssetType memory makeMatch, LibAsset.AssetType memory takeMatch) = matchAssets(orderLeft, orderRight);
         bytes32 leftOrderKeyHash = LibOrder.hashKey(orderLeft);

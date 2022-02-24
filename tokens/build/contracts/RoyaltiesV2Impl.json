@@ -64,7 +64,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"address payable\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint96\",\"name\":\"value\",\"type\":\"uint96\"}],\"indexed\":false,\"internalType\":\"struct LibPart.Part[]\",\"name\":\"royalties\",\"type\":\"tuple[]\"}],\"name\":\"RoyaltiesSet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getRaribleV2Royalties\",\"outputs\":[{\"components\":[{\"internalType\":\"address payable\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint96\",\"name\":\"value\",\"type\":\"uint96\"}],\"internalType\":\"struct LibPart.Part[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@rarible/royalties/contracts/impl/RoyaltiesV2Impl.sol\":\"RoyaltiesV2Impl\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@rarible/royalties/contracts/LibPart.sol\":{\"keccak256\":\"0xd0123f7411573a6a7e1527e0d3901913d7642e504ff240d5b7c5b76a28587def\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://447b449f7f986ecfdea10cbc96ae276877102866353b4f8410fec0bdb357d5ae\",\"dweb:/ipfs/QmatbYwMc1UXCGGH1D9fvgLbLPNdgzBVafYW84B1nJJiRr\"]},\"@rarible/royalties/contracts/RoyaltiesV2.sol\":{\"keccak256\":\"0x163fec7b8e88a8ca7f6653064f9c3f2e6d429d3bf156ebce32e4c9be5a2900e8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a0c4486b6c73eb951b7feeb83bfaa64f8387b92b1eac483f0ee4aacca7fb26b8\",\"dweb:/ipfs/Qmdh9c58do457AfdnwJgnqBU6vM8EGtnq38QZueTaSmfrY\"]},\"@rarible/royalties/contracts/impl/AbstractRoyalties.sol\":{\"keccak256\":\"0x65840b8ea3e8b4f770933a18bde01f03efd5a85927ba16fe82fea687a7fa0834\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://52f367450db7cd78a05be05aaaa1e91bb212ce16f6049db0a1b82fe295be98c1\",\"dweb:/ipfs/QmedKKzyvF8478NHzSxEiwTX5JrpvFSqiAjTWfDaPJdKjK\"]},\"@rarible/royalties/contracts/impl/RoyaltiesV2Impl.sol\":{\"keccak256\":\"0xad33236b2c6b710fd3ef5011ab6b8cee484677f326ae04e01f1d8b78ea9dd5b7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2663ff7c16b2d48a7c7bb7e7e7a2746ddb5a9a60d1775213dcb058d4a60f7ea7\",\"dweb:/ipfs/QmdtErecavncNnFsHQeFZ5ajqwp6zGSChUr6yWQfvgdYH9\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"address payable\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint96\",\"name\":\"value\",\"type\":\"uint96\"}],\"indexed\":false,\"internalType\":\"struct LibPart.Part[]\",\"name\":\"royalties\",\"type\":\"tuple[]\"}],\"name\":\"RoyaltiesSet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getRaribleV2Royalties\",\"outputs\":[{\"components\":[{\"internalType\":\"address payable\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint96\",\"name\":\"value\",\"type\":\"uint96\"}],\"internalType\":\"struct LibPart.Part[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@sipher/royalties/contracts/impl/RoyaltiesV2Impl.sol\":\"RoyaltiesV2Impl\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@sipher/royalties/contracts/LibPart.sol\":{\"keccak256\":\"0xd0123f7411573a6a7e1527e0d3901913d7642e504ff240d5b7c5b76a28587def\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://447b449f7f986ecfdea10cbc96ae276877102866353b4f8410fec0bdb357d5ae\",\"dweb:/ipfs/QmatbYwMc1UXCGGH1D9fvgLbLPNdgzBVafYW84B1nJJiRr\"]},\"@sipher/royalties/contracts/RoyaltiesV2.sol\":{\"keccak256\":\"0x163fec7b8e88a8ca7f6653064f9c3f2e6d429d3bf156ebce32e4c9be5a2900e8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a0c4486b6c73eb951b7feeb83bfaa64f8387b92b1eac483f0ee4aacca7fb26b8\",\"dweb:/ipfs/Qmdh9c58do457AfdnwJgnqBU6vM8EGtnq38QZueTaSmfrY\"]},\"@sipher/royalties/contracts/impl/AbstractRoyalties.sol\":{\"keccak256\":\"0x65840b8ea3e8b4f770933a18bde01f03efd5a85927ba16fe82fea687a7fa0834\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://52f367450db7cd78a05be05aaaa1e91bb212ce16f6049db0a1b82fe295be98c1\",\"dweb:/ipfs/QmedKKzyvF8478NHzSxEiwTX5JrpvFSqiAjTWfDaPJdKjK\"]},\"@sipher/royalties/contracts/impl/RoyaltiesV2Impl.sol\":{\"keccak256\":\"0xad33236b2c6b710fd3ef5011ab6b8cee484677f326ae04e01f1d8b78ea9dd5b7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2663ff7c16b2d48a7c7bb7e7e7a2746ddb5a9a60d1775213dcb058d4a60f7ea7\",\"dweb:/ipfs/QmdtErecavncNnFsHQeFZ5ajqwp6zGSChUr6yWQfvgdYH9\"]}},\"version\":1}",
   "bytecode": "0x608060405234801561001057600080fd5b50610198806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c8063cad96cca14610030575b600080fd5b61004361003e3660046100e4565b610059565b60405161005091906100fc565b60405180910390f35b600081815260208181526040808320805482518185028101850190935280835260609492939192909184015b828210156100d957600084815260209081902060408051808201909152908401546001600160a01b0381168252600160a01b90046bffffffffffffffffffffffff1681830152825260019092019101610085565b505050509050919050565b6000602082840312156100f5578081fd5b5035919050565b602080825282518282018190526000919060409081850190868401855b8281101561015557815180516001600160a01b031685528601516bffffffffffffffffffffffff16868501529284019290850190600101610119565b509197965050505050505056fea2646970667358221220cc2d139006662688647f8a00e36220662a84fa7e82e582b8d9c636f99d2eda8464736f6c63430007060033",
   "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c8063cad96cca14610030575b600080fd5b61004361003e3660046100e4565b610059565b60405161005091906100fc565b60405180910390f35b600081815260208181526040808320805482518185028101850190935280835260609492939192909184015b828210156100d957600084815260209081902060408051808201909152908401546001600160a01b0381168252600160a01b90046bffffffffffffffffffffffff1681830152825260019092019101610085565b505050509050919050565b6000602082840312156100f5578081fd5b5035919050565b602080825282518282018190526000919060409081850190868401855b8281101561015557815180516001600160a01b031685528601516bffffffffffffffffffffffff16868501529284019290850190600101610119565b509197965050505050505056fea2646970667358221220cc2d139006662688647f8a00e36220662a84fa7e82e582b8d9c636f99d2eda8464736f6c63430007060033",
   "immutableReferences": {},
@@ -866,9 +866,9 @@
   "sourceMap": "150:348:38:-:0;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "150:348:38:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;216:135;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;;331:9;:13;;;;;;;;;;;324:20;;;;;;;;;;;;;;;;;291:21;;324:20;;331:13;;324:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;324:20:38;;;;-1:-1:-1;;;324:20:38;;;;;;;;;;;;;;;;;;;;;;;;;216:135;;;:::o;14:190:72:-;;126:2;114:9;105:7;101:23;97:32;94:2;;;147:6;139;132:22;94:2;-1:-1:-1;175:23:72;;84:120;-1:-1:-1;84:120:72:o;209:844::-;424:2;476:21;;;546:13;;449:18;;;568:22;;;209:844;;424:2;609;;627:18;;;;668:15;;;209:844;714:313;728:6;725:1;722:13;714:313;;;787:13;;829:9;;-1:-1:-1;;;;;825:35:72;813:48;;905:11;;899:18;919:26;895:51;881:12;;;874:73;967:12;;;;1002:15;;;;857:1;743:9;714:313;;;-1:-1:-1;1044:3:72;;404:649;-1:-1:-1;;;;;;;404:649:72:o",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.2 <0.8.0;\npragma abicoder v2;\n\nimport \"./AbstractRoyalties.sol\";\nimport \"../RoyaltiesV2.sol\";\n\ncontract RoyaltiesV2Impl is AbstractRoyalties, RoyaltiesV2 {\n\n    function getRaribleV2Royalties(uint256 id) override external view returns (LibPart.Part[] memory) {\n        return royalties[id];\n    }\n\n    function _onRoyaltiesSet(uint256 id, LibPart.Part[] memory _royalties) override internal {\n        emit RoyaltiesSet(id, _royalties);\n    }\n}\n",
-  "sourcePath": "@rarible/royalties/contracts/impl/RoyaltiesV2Impl.sol",
+  "sourcePath": "@sipher/royalties/contracts/impl/RoyaltiesV2Impl.sol",
   "ast": {
-    "absolutePath": "@rarible/royalties/contracts/impl/RoyaltiesV2Impl.sol",
+    "absolutePath": "@sipher/royalties/contracts/impl/RoyaltiesV2Impl.sol",
     "exportedSymbols": {
       "AbstractRoyalties": [
         4758
@@ -911,7 +911,7 @@
         "src": "65:19:38"
       },
       {
-        "absolutePath": "@rarible/royalties/contracts/impl/AbstractRoyalties.sol",
+        "absolutePath": "@sipher/royalties/contracts/impl/AbstractRoyalties.sol",
         "file": "./AbstractRoyalties.sol",
         "id": 4762,
         "nodeType": "ImportDirective",
@@ -922,7 +922,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "@rarible/royalties/contracts/RoyaltiesV2.sol",
+        "absolutePath": "@sipher/royalties/contracts/RoyaltiesV2.sol",
         "file": "../RoyaltiesV2.sol",
         "id": 4763,
         "nodeType": "ImportDirective",
@@ -1314,7 +1314,7 @@
   },
   "legacyAST": {
     "attributes": {
-      "absolutePath": "@rarible/royalties/contracts/impl/RoyaltiesV2Impl.sol",
+      "absolutePath": "@sipher/royalties/contracts/impl/RoyaltiesV2Impl.sol",
       "exportedSymbols": {
         "AbstractRoyalties": [
           4758
@@ -1362,7 +1362,7 @@
       {
         "attributes": {
           "SourceUnit": 4759,
-          "absolutePath": "@rarible/royalties/contracts/impl/AbstractRoyalties.sol",
+          "absolutePath": "@sipher/royalties/contracts/impl/AbstractRoyalties.sol",
           "file": "./AbstractRoyalties.sol",
           "scope": 4798,
           "symbolAliases": [
@@ -1377,7 +1377,7 @@
       {
         "attributes": {
           "SourceUnit": 4612,
-          "absolutePath": "@rarible/royalties/contracts/RoyaltiesV2.sol",
+          "absolutePath": "@sipher/royalties/contracts/RoyaltiesV2.sol",
           "file": "../RoyaltiesV2.sol",
           "scope": 4798,
           "symbolAliases": [

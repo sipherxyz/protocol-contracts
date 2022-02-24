@@ -63,7 +63,7 @@
       "type": "event"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"components\":[{\"components\":[{\"internalType\":\"bytes4\",\"name\":\"assetClass\",\"type\":\"bytes4\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"internalType\":\"struct LibAsset.AssetType\",\"name\":\"assetType\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"struct LibAsset.Asset\",\"name\":\"asset\",\"type\":\"tuple\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes4\",\"name\":\"transferDirection\",\"type\":\"bytes4\"},{\"indexed\":false,\"internalType\":\"bytes4\",\"name\":\"transferType\",\"type\":\"bytes4\"}],\"name\":\"Transfer\",\"type\":\"event\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/quadro/Projects/rarible/protocol-contracts/transfer-proxy/contracts/transfer/ITransferExecutor.sol\":\"ITransferExecutor\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/quadro/Projects/rarible/protocol-contracts/transfer-proxy/contracts/transfer/ITransferExecutor.sol\":{\"keccak256\":\"0x97eeb71dc77490dc2d343e9648b8e8cdfaed21044f3a7dc9966b3e311106302f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e3bb9edfb0fc47b5f67e91139889ee57737e89ab7621ad24f7c6772b4892671c\",\"dweb:/ipfs/QmX3yYSTXvCEH7swWzV6zzPKXyEn75qBbyJQrw8eerMbfm\"]},\"@rarible/lib-asset/contracts/LibAsset.sol\":{\"keccak256\":\"0xc1066d605bee73f3d8a3111b7f8abefd7673387bc784916525d2457b844a4cc8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://03c321ebe8f3a629e6e6d3650f11e09a83d803c9d2d40ccf1c0897068afed2e4\",\"dweb:/ipfs/QmdqTsst87KD2NKRzqdpw8QWsJo8mjgp4prozHUfexN1pc\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"components\":[{\"components\":[{\"internalType\":\"bytes4\",\"name\":\"assetClass\",\"type\":\"bytes4\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"internalType\":\"struct LibAsset.AssetType\",\"name\":\"assetType\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"struct LibAsset.Asset\",\"name\":\"asset\",\"type\":\"tuple\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes4\",\"name\":\"transferDirection\",\"type\":\"bytes4\"},{\"indexed\":false,\"internalType\":\"bytes4\",\"name\":\"transferType\",\"type\":\"bytes4\"}],\"name\":\"Transfer\",\"type\":\"event\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/quadro/Projects/rarible/protocol-contracts/transfer-proxy/contracts/transfer/ITransferExecutor.sol\":\"ITransferExecutor\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/quadro/Projects/rarible/protocol-contracts/transfer-proxy/contracts/transfer/ITransferExecutor.sol\":{\"keccak256\":\"0x97eeb71dc77490dc2d343e9648b8e8cdfaed21044f3a7dc9966b3e311106302f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e3bb9edfb0fc47b5f67e91139889ee57737e89ab7621ad24f7c6772b4892671c\",\"dweb:/ipfs/QmX3yYSTXvCEH7swWzV6zzPKXyEn75qBbyJQrw8eerMbfm\"]},\"@sipher/lib-asset/contracts/LibAsset.sol\":{\"keccak256\":\"0xc1066d605bee73f3d8a3111b7f8abefd7673387bc784916525d2457b844a4cc8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://03c321ebe8f3a629e6e6d3650f11e09a83d803c9d2d40ccf1c0897068afed2e4\",\"dweb:/ipfs/QmdqTsst87KD2NKRzqdpw8QWsJo8mjgp4prozHUfexN1pc\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -71,7 +71,7 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.9 <0.8.0;\npragma abicoder v2;\n\nimport \"@rarible/lib-asset/contracts/LibAsset.sol\";\n\nabstract contract ITransferExecutor {\n\n    //events\n    event Transfer(LibAsset.Asset asset, address from, address to, bytes4 transferDirection, bytes4 transferType);\n\n    function transfer(\n        LibAsset.Asset memory asset,\n        address from,\n        address to,\n        bytes4 transferDirection,\n        bytes4 transferType\n    ) internal virtual;\n\n}\n",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity >=0.6.9 <0.8.0;\npragma abicoder v2;\n\nimport \"@sipher/lib-asset/contracts/LibAsset.sol\";\n\nabstract contract ITransferExecutor {\n\n    //events\n    event Transfer(LibAsset.Asset asset, address from, address to, bytes4 transferDirection, bytes4 transferType);\n\n    function transfer(\n        LibAsset.Asset memory asset,\n        address from,\n        address to,\n        bytes4 transferDirection,\n        bytes4 transferType\n    ) internal virtual;\n\n}\n",
   "sourcePath": "/home/quadro/Projects/rarible/protocol-contracts/transfer-proxy/contracts/transfer/ITransferExecutor.sol",
   "ast": {
     "absolutePath": "/home/quadro/Projects/rarible/protocol-contracts/transfer-proxy/contracts/transfer/ITransferExecutor.sol",
@@ -111,8 +111,8 @@
         "src": "65:19:14"
       },
       {
-        "absolutePath": "@rarible/lib-asset/contracts/LibAsset.sol",
-        "file": "@rarible/lib-asset/contracts/LibAsset.sol",
+        "absolutePath": "@sipher/lib-asset/contracts/LibAsset.sol",
+        "file": "@sipher/lib-asset/contracts/LibAsset.sol",
         "id": 1470,
         "nodeType": "ImportDirective",
         "scope": 1497,
@@ -496,8 +496,8 @@
       {
         "attributes": {
           "SourceUnit": 4375,
-          "absolutePath": "@rarible/lib-asset/contracts/LibAsset.sol",
-          "file": "@rarible/lib-asset/contracts/LibAsset.sol",
+          "absolutePath": "@sipher/lib-asset/contracts/LibAsset.sol",
+          "file": "@sipher/lib-asset/contracts/LibAsset.sol",
           "scope": 1497,
           "symbolAliases": [
             null

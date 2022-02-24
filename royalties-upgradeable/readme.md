@@ -1,4 +1,4 @@
-### Abstract upgradeable smart contracts for NFTs having royalties on Rarible.
+### Abstract upgradeable smart contracts for NFTs having royalties on Sipher.
 Based on @openzeppelin/contracts-upgradeable 
 
 #### There are two versions:

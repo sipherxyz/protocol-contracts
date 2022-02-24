@@ -442,7 +442,7 @@ contract("ExchangeV2, sellerFee + buyerFee =  6%,", accounts => {
     	await expectThrow(
       	testing.matchOrders(left, "0x", right, await getSignature(right, accounts[1]), { from: accounts[2], value: 300, gasPrice: 0 })
       );
-			/*comments for k.shcherbakov@rarible.com to show mechanism*/
+			/*comments for k.shcherbakov@sipher.com to show mechanism*/
 //    	await verifyBalanceChange(accounts[2], 302, async () =>			//200+6buyerFee+ (10 +12 +14 +60 origin left) (Need 302 ETH not enough!)
 //    		verifyBalanceChange(accounts[1], -194, async () =>				//200 -6seller -
 //    			verifyBalanceChange(accounts[5], -10, async () =>
