@@ -30,15 +30,15 @@ abstract contract ExchangeCore is
     //events
     event Cancel(
         bytes32 hash,
-        address maker,
+        address indexed maker,
         LibAsset.AssetType makeAssetType,
         LibAsset.AssetType takeAssetType
     );
     event Match(
         bytes32 leftHash,
         bytes32 rightHash,
-        address leftMaker,
-        address rightMaker,
+        address indexed leftMaker,
+        address indexed rightMaker,
         uint256 newLeftFill,
         uint256 newRightFill,
         LibAsset.AssetType leftAsset,

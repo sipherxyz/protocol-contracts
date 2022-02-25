@@ -8,17 +8,17 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   const { deployer, recipient } = await getNamedAccounts();
 
-  console.log(deployer);
-
-  console.log(recipient);
-
   const transferProxyInfo = await hre.ethers.getContract("TransferProxy");
 
-  const erc20TransferProxyInfo = await hre.ethers.getContract("ERC20TransferProxy");
+  const erc20TransferProxyInfo = await hre.ethers.getContract(
+    "ERC20TransferProxy"
+  );
 
   const royaltyRegistryInfo = await hre.ethers.getContract("RoyaltiesRegistry");
 
-  const assetMatcherCollection = await hre.ethers.getContract("AssetMatcherCollection");
+  const assetMatcherCollection = await hre.ethers.getContract(
+    "AssetMatcherCollection"
+  );
 
   const deployResult = await deploy("Exchange", {
     from: deployer,
@@ -29,15 +29,30 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       execute: {
         init: {
           methodName: "__Exchange_init",
-          args: [transferProxyInfo.address, erc20TransferProxyInfo.address, 0, recipient, royaltyRegistryInfo.address],
+          args: [
+            transferProxyInfo.address,
+            erc20TransferProxyInfo.address,
+            0,
+            recipient,
+            royaltyRegistryInfo.address,
+          ],
         },
       },
     },
     autoMine: true, // speed up deployment on local network (ganache, hardhat), no effect on live networks
   });
 
-  const Exchange = await ethers.getContractAt(deployResult.abi, deployResult.address, deployer);
-  await (await Exchange.setAssetMatcher(hashId("COLLECTION"), assetMatcherCollection.address)).wait();
+  const Exchange = await ethers.getContractAt(
+    deployResult.abi,
+    deployResult.address,
+    deployer
+  );
+  await (
+    await Exchange.setAssetMatcher(
+      hashId("COLLECTION"),
+      assetMatcherCollection.address
+    )
+  ).wait();
 };
 export default func;
 func.tags = ["Exchange"];
