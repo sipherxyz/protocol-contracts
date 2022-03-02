@@ -1,7 +1,7 @@
 const { deployProxy } = require('@openzeppelin/truffle-upgrades');
 
-const ERC721Rarible = artifacts.require('ERC721Rarible');
-const ERC721RaribleMinimal = artifacts.require('ERC721RaribleMinimal');
+const ERC721Sipher = artifacts.require('ERC721Sipher');
+const ERC721SipherMinimal = artifacts.require('ERC721SipherMinimal');
 
 const rinkeby = {
 	erc721LazyMintTransferProxy: "0x75fDbe19C2dc673384dDc14C9F453dB86F5f32E8",
@@ -50,6 +50,6 @@ module.exports = async function (deployer, network) {
   const transferProxy = settings.transferProxy;
   const erc721LazyMintTransferProxy = settings.erc721LazyMintTransferProxy;
 
-  await deployProxy(ERC721Rarible, ["Rarible", "RARI", "ipfs:/", "", transferProxy, erc721LazyMintTransferProxy], { deployer, initializer: '__ERC721Rarible_init' });
-  await deployProxy(ERC721RaribleMinimal, ["Rarible", "RARI", "ipfs:/", "", transferProxy, erc721LazyMintTransferProxy], { deployer, initializer: '__ERC721Rarible_init' });
+  await deployProxy(ERC721Sipher, ["Sipher", "RARI", "ipfs:/", "", transferProxy, erc721LazyMintTransferProxy], { deployer, initializer: '__ERC721Sipher_init' });
+  await deployProxy(ERC721SipherMinimal, ["Sipher", "RARI", "ipfs:/", "", transferProxy, erc721LazyMintTransferProxy], { deployer, initializer: '__ERC721Sipher_init' });
 };

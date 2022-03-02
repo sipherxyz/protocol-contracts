@@ -7,16 +7,16 @@ contract("Tokens test", accounts => {
   let erc721;
   let erc1155;
   let erc721TokenId = 52;
-  let url = "https://ipfs.rarible.com";
+  let url = "https://ipfs.sipher.com";
 
   beforeEach(async () => {
     /*ERC721 */
-    erc721 = await TestERC721.new("Rarible", "RARI");
+    erc721 = await TestERC721.new("Sipher", "RARI");
   });
 
   describe("Check transfer, burn, transfer", () => {
 
-    it("Mint and transfer after burn ERC721, it`s bad, but possible please use ERC721Rarible, ERC721RaribleMinimal for careful burn", async () => {
+    it("Mint and transfer after burn ERC721, it`s bad, but possible please use ERC721Sipher, ERC721SipherMinimal for careful burn", async () => {
       let owner = accounts[1];
       let to = accounts[2];
       let newTo = accounts[4];

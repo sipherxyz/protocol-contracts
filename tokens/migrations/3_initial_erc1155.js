@@ -1,6 +1,6 @@
 const { deployProxy } = require('@openzeppelin/truffle-upgrades');
 
-const ERC1155Rarible = artifacts.require('ERC1155Rarible');
+const ERC1155Sipher = artifacts.require('ERC1155Sipher');
 
 const rinkeby = {
 	erc721LazyMintTransferProxy: "0x75fDbe19C2dc673384dDc14C9F453dB86F5f32E8",
@@ -46,5 +46,5 @@ function getSettings(network) {
 module.exports = async function (deployer, network) {
   const { erc1155LazyMintTransferProxy, transferProxy } = getSettings(network);
 
-  await deployProxy(ERC1155Rarible, ["Rarible", "RARI", "ipfs:/", "", transferProxy, erc1155LazyMintTransferProxy], { deployer, initializer: '__ERC1155Rarible_init' });
+  await deployProxy(ERC1155Sipher, ["Sipher", "RARI", "ipfs:/", "", transferProxy, erc1155LazyMintTransferProxy], { deployer, initializer: '__ERC1155Sipher_init' });
 };

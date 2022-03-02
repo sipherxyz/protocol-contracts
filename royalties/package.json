@@ -1,7 +1,7 @@
 {
   "name": "@sipher/royalties",
   "version": "0.7.4",
-  "description": "Solidity interfaces to support royalties  on Rarible",
+  "description": "Solidity interfaces to support royalties  on Sipher",
   "files": [
     "contracts",
     "readme.md"

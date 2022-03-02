@@ -1,7 +1,7 @@
 {
   "name": "@sipher/libraries",
   "version": "0.1.2",
-  "description": "Solidity libraries used by ExchangeV2 on Rarible",
+  "description": "Solidity libraries used by ExchangeV2 on Sipher",
   "files": [
     "contracts",
     "readme.md"

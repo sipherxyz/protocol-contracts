@@ -1,7 +1,7 @@
 {
   "name": "@sipher/exchange-interfaces",
   "version": "0.4.0",
-  "description": "Solidity interfaces used by ExchangeV2 on Rarible",
+  "description": "Solidity interfaces used by ExchangeV2 on Sipher",
   "files": [
     "contracts",
     "readme.md"

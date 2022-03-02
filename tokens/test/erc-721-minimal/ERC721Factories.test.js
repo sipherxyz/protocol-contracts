@@ -1,7 +1,7 @@
 const UpgradeableBeacon = artifacts.require("UpgradeableBeacon.sol");
 const BeaconProxy = artifacts.require("BeaconProxy.sol");
-const ERC721RaribleMinimal = artifacts.require("ERC721RaribleMinimal.sol");
-const ERC721RaribleFactoryC2 = artifacts.require("ERC721RaribleFactoryC2.sol");
+const ERC721SipherMinimal = artifacts.require("ERC721SipherMinimal.sol");
+const ERC721SipherFactoryC2 = artifacts.require("ERC721SipherFactoryC2.sol");
 
 const truffleAssert = require('truffle-assertions');
 
@@ -15,21 +15,21 @@ contract("Test factories minimal", accounts => {
 
   let factory;
   beforeEach(async () => {
-		const impl = await ERC721RaribleMinimal.new();
+		const impl = await ERC721SipherMinimal.new();
 		const beacon = await UpgradeableBeacon.new(impl.address);
-		factory = await ERC721RaribleFactoryC2.new(beacon.address, zeroAddress, zeroAddress);
+		factory = await ERC721SipherFactoryC2.new(beacon.address, zeroAddress, zeroAddress);
 	})
 
 	it("should create erc721 private from factory, getAddress works correctly", async () => {
     let proxy;
-    const addressBeforeDeploy = await factory.getAddress("name", "RARI", "https://ipfs.rarible.com", "https://ipfs.rarible.com", [], salt)
+    const addressBeforeDeploy = await factory.getAddress("name", "RARI", "https://ipfs.sipher.com", "https://ipfs.sipher.com", [], salt)
 
-		const resultCreateToken = await factory.createToken("name", "RARI", "https://ipfs.rarible.com", "https://ipfs.rarible.com", [], salt, {from: tokenOwner});
-      truffleAssert.eventEmitted(resultCreateToken, 'Create721RaribleUserProxy', (ev) => {
+		const resultCreateToken = await factory.createToken("name", "RARI", "https://ipfs.sipher.com", "https://ipfs.sipher.com", [], salt, {from: tokenOwner});
+      truffleAssert.eventEmitted(resultCreateToken, 'Create721SipherUserProxy', (ev) => {
         proxy = ev.proxy;
         return true;
       });
-		const token = await ERC721RaribleMinimal.at(proxy);
+		const token = await ERC721SipherMinimal.at(proxy);
     const minter = tokenOwner;
     let transferTo = accounts[2];
 
@@ -50,14 +50,14 @@ contract("Test factories minimal", accounts => {
 
   it("should create erc721 public from factory, getAddress works correctly", async () => {
     let proxy;
-    const addressBeforeDeploy = await factory.getAddress("name", "RARI", "https://ipfs.rarible.com", "https://ipfs.rarible.com", salt)
+    const addressBeforeDeploy = await factory.getAddress("name", "RARI", "https://ipfs.sipher.com", "https://ipfs.sipher.com", salt)
 
-		const resultCreateToken = await factory.methods['createToken(string,string,string,string,uint256)']("name", "RARI", "https://ipfs.rarible.com", "https://ipfs.rarible.com", salt, {from: tokenOwner});
-      truffleAssert.eventEmitted(resultCreateToken, 'Create721RaribleProxy', (ev) => {
+		const resultCreateToken = await factory.methods['createToken(string,string,string,string,uint256)']("name", "RARI", "https://ipfs.sipher.com", "https://ipfs.sipher.com", salt, {from: tokenOwner});
+      truffleAssert.eventEmitted(resultCreateToken, 'Create721SipherProxy', (ev) => {
         proxy = ev.proxy;
         return true;
       });
-		const token = await ERC721RaribleMinimal.at(proxy);
+		const token = await ERC721SipherMinimal.at(proxy);
     const minter = tokenOwner;
     let transferTo = accounts[2];
 
